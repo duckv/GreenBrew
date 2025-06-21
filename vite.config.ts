@@ -21,7 +21,7 @@ export default defineConfig(({ mode }) => ({
           // React and core dependencies
           "react-vendor": ["react", "react-dom", "react-router-dom"],
 
-          // UI libraries
+          // UI libraries - only include packages that actually exist
           "ui-vendor": [
             "@radix-ui/react-dialog",
             "@radix-ui/react-dropdown-menu",
@@ -40,7 +40,6 @@ export default defineConfig(({ mode }) => ({
             "@radix-ui/react-radio-group",
             "@radix-ui/react-scroll-area",
             "@radix-ui/react-separator",
-            "@radix-ui/react-sheet",
             "@radix-ui/react-slider",
             "@radix-ui/react-switch",
             "@radix-ui/react-toggle",
