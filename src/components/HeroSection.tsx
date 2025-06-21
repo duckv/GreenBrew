@@ -18,23 +18,22 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
         <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          Perfect Brews,{" "}
-          <span className="text-brand-pink">Fine Patisseries</span>
+          Artisan Breads, <span className="text-brand-pink">Perfect Brews</span>
         </h1>
 
         <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
-          Artisan gelato, premium coffee, and fresh pastries crafted daily with
-          the finest ingredients
+          Fresh artisan breads, premium coffee, gelato, and delicious pastries
+          crafted daily in Berkeley Heights
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center space-y-4 sm:space-y-0 sm:space-x-6 mb-8">
           <div className="flex items-center space-x-2 text-gray-200">
             <MapPin className="w-5 h-5 text-brand-pink" />
-            <span>123 Main Street, Downtown</span>
+            <span>512 Springfield Ave, Berkeley Heights</span>
           </div>
           <div className="flex items-center space-x-2 text-gray-200">
             <Clock className="w-5 h-5 text-brand-pink" />
-            <span>Open Daily 7AM - 5:30PM</span>
+            <span>Mon-Sat 7AM-5:30PM • Sun 9AM-4PM</span>
           </div>
         </div>
 
@@ -56,7 +55,7 @@ export default function HeroSection() {
             variant="outline"
             className="btn-secondary text-lg px-8 py-4 bg-white/20 border-white text-white hover:bg-white hover:text-brand-brown"
             onClick={() => {
-              window.open("tel:+1234567890", "_self");
+              window.open("tel:+19089330123", "_self");
             }}
           >
             Call to Order

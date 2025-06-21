@@ -29,15 +29,15 @@ export default function BusinessInfo() {
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-cafe-gray-900 mb-6">
               Your Neighborhood
               <span className="text-brand-pink block">
-                Gelato & Coffee Shop
+                Bread & Brew Shop
               </span>
             </h2>
 
             <p className="text-lg text-cafe-gray-600 mb-8 leading-relaxed">
-              Since 2008, we've been crafting the finest gelato and serving
-              premium coffee in the heart of downtown. Our passion for quality
+              Since 2008, we've been baking fresh artisan breads and serving
+              premium coffee in Berkeley Heights. Our passion for quality
               ingredients and traditional techniques creates an authentic
-              Italian experience right in your neighborhood.
+              experience that brings the community together.
             </p>
 
             {/* Contact Information */}
@@ -110,20 +110,20 @@ export default function BusinessInfo() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-brand-brown mx-auto mb-4" />
-                    <p className="text-cafe-gray-600 font-medium">
-                      Interactive Map
-                    </p>
-                    <p className="text-sm text-cafe-gray-500">
-                      Click to view directions
-                    </p>
-                  </div>
-                </div>
-
-                {/* Overlay with store info */}
-                <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-6">
+                  <p className="text-cafe-gray-700">
+                    Bread N' Br☕︎w
+                    <br />
+                    512 Springfield Ave
+                    <br />
+                    Berkeley Heights, NJ 07922
+                  </p>
+                  <div className="mt-3 space-y-1">
                   <h3 className="font-heading text-lg font-semibold text-cafe-gray-900 mb-2">
-                    Reza's Café
+                    Bread N' Br☕︎w
                   </h3>
+                  <p className="text-sm text-cafe-gray-600 mb-3">
+                    512 Springfield Ave, Berkeley Heights
+                  </p>
                   <p className="text-sm text-cafe-gray-600 mb-3">
                     123 Main Street, Downtown
                   </p>
@@ -133,7 +133,7 @@ export default function BusinessInfo() {
                       Open Now
                     </span>
                     <a
-                      href="https://maps.google.com"
+                      href="https://maps.google.com/maps?q=512+Springfield+Ave+Berkeley+Heights+NJ+07922"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-sm text-brand-brown hover:text-brand-brown-dark font-medium"
