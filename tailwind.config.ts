@@ -12,13 +12,38 @@ export default {
   theme: {
     container: {
       center: true,
-      padding: "2rem",
+      padding: "1.5rem",
       screens: {
-        "2xl": "1400px",
+        "2xl": "1280px",
       },
     },
     extend: {
+      fontFamily: {
+        heading: ["Playfair Display", "serif"],
+        body: ["Inter", "system-ui", "sans-serif"],
+      },
       colors: {
+        // Cafe brand colors
+        "brand-pink": "rgb(236, 72, 153)",
+        "brand-brown": {
+          DEFAULT: "rgb(146, 64, 14)",
+          dark: "rgb(120, 53, 15)",
+          light: "rgb(180, 83, 9)",
+        },
+        "cafe-gray": {
+          50: "rgb(249, 250, 251)",
+          100: "rgb(243, 244, 246)",
+          200: "rgb(229, 231, 235)",
+          300: "rgb(209, 213, 219)",
+          400: "rgb(156, 163, 175)",
+          500: "rgb(107, 114, 128)",
+          600: "rgb(75, 85, 99)",
+          700: "rgb(55, 65, 81)",
+          800: "rgb(31, 41, 55)",
+          900: "rgb(17, 24, 39)",
+        },
+
+        // Keep shadcn color system
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
@@ -63,6 +88,10 @@ export default {
           ring: "hsl(var(--sidebar-ring))",
         },
       },
+      spacing: {
+        section: "5rem",
+        "section-sm": "3rem",
+      },
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
@@ -85,10 +114,21 @@ export default {
             height: "0",
           },
         },
+        "fade-in": {
+          from: {
+            opacity: "0",
+            transform: "translateY(20px)",
+          },
+          to: {
+            opacity: "1",
+            transform: "translateY(0)",
+          },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "fade-in": "fade-in 0.6s ease-out",
       },
     },
   },
