@@ -16,10 +16,7 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 py-12">
           {/* Brand & Description */}
           <div className="lg:col-span-1">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="w-8 h-8 bg-brand-pink rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">B</span>
-              </div>
+            <div className="mb-4">
               <span className="font-heading text-xl font-bold text-white">
                 Bread N' Br☕︎w
               </span>

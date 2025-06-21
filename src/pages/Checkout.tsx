@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import LocationModal from "@/components/LocationModal";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
@@ -18,6 +19,7 @@ import {
   Trash2,
   Plus,
   Minus,
+  Edit,
 } from "lucide-react";
 
 interface CartItem {
@@ -41,6 +43,7 @@ export default function Checkout() {
   const [isProcessing, setIsProcessing] = useState(false);
   const [tipPercentage, setTipPercentage] = useState<number>(0);
   const [customTip, setCustomTip] = useState("");
+  const [showLocationModal, setShowLocationModal] = useState(false);
 
   useEffect(() => {
     // Load cart and user info
@@ -177,22 +180,33 @@ export default function Checkout() {
             <h1 className="font-heading text-3xl md:text-4xl font-bold text-cafe-gray-900 mb-4">
               Checkout
             </h1>
-            <div className="flex items-center space-x-4 text-cafe-gray-600">
-              {orderType === "pickup" ? (
+            <div className="flex items-center justify-between">
+              <div className="flex items-center space-x-4 text-cafe-gray-600">
+                {orderType === "pickup" ? (
+                  <div className="flex items-center space-x-2">
+                    <Store className="w-4 h-4" />
+                    <span>Pickup Order</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center space-x-2">
+                    <Truck className="w-4 h-4" />
+                    <span>Delivery Order</span>
+                  </div>
+                )}
                 <div className="flex items-center space-x-2">
-                  <Store className="w-4 h-4" />
-                  <span>Pickup Order</span>
+                  <Clock className="w-4 h-4" />
+                  <span>Ready in 15-20 minutes</span>
                 </div>
-              ) : (
-                <div className="flex items-center space-x-2">
-                  <Truck className="w-4 h-4" />
-                  <span>Delivery Order</span>
-                </div>
-              )}
-              <div className="flex items-center space-x-2">
-                <Clock className="w-4 h-4" />
-                <span>Ready in 15-20 minutes</span>
               </div>
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={() => setShowLocationModal(true)}
+                className="text-brand-brown border-brand-brown hover:bg-brand-brown hover:text-white"
+              >
+                <Edit className="w-3 h-3 mr-1" />
+                Change
+              </Button>
             </div>
           </div>
 

@@ -279,9 +279,9 @@ Thank you for your order!
                 </Button>
                 <Button
                   className="flex-1 btn-primary"
-                  onClick={() => navigate("/")}
+                  onClick={() => navigate("/menu")}
                 >
-                  Order Again
+                  Back to Menu
                 </Button>
               </div>
 
