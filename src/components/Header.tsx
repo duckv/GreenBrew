@@ -9,7 +9,6 @@ import HeaderCartModal from "./HeaderCartModal";
 
 export default function Header() {
   const { getTotalItems } = useCart();
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
