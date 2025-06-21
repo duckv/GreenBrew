@@ -294,6 +294,24 @@ const menuItems: MenuItem[] = [
   },
 ];
 
+// Customization options for all items
+const customizationOptions: CustomizationOption[] = [
+  { id: "nothing", name: "Nothing", price: 0 },
+  { id: "extra-shot", name: "Extra Shot", price: 1.5 },
+  { id: "decaf", name: "Make it Decaf", price: 0 },
+  { id: "extra-hot", name: "Extra Hot", price: 0 },
+  { id: "extra-foam", name: "Extra Foam", price: 0 },
+  { id: "oat-milk", name: "Oat Milk", price: 0.75 },
+  { id: "almond-milk", name: "Almond Milk", price: 0.5 },
+  { id: "soy-milk", name: "Soy Milk", price: 0.5 },
+  { id: "coconut-milk", name: "Coconut Milk", price: 0.5 },
+  { id: "vanilla-syrup", name: "Vanilla Syrup", price: 0.5 },
+  { id: "caramel-syrup", name: "Caramel Syrup", price: 0.5 },
+  { id: "hazelnut-syrup", name: "Hazelnut Syrup", price: 0.5 },
+  { id: "extra-topping", name: "Extra Toppings", price: 1.0 },
+  { id: "whipped-cream", name: "Whipped Cream", price: 0.5 },
+];
+
 export default function Menu() {
   const navigate = useNavigate();
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
