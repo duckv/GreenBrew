@@ -217,8 +217,10 @@ function FeaturedItemCard({
             </DialogTrigger>
             <DialogContent className="max-w-md">
               <DialogHeader>
-                <DialogTitle className="text-xl font-semibold">
-                  Customize {item.name}
+                <DialogTitle asChild>
+                  <h2 className="text-xl font-semibold">
+                    Customize {item.name}
+                  </h2>
                 </DialogTitle>
               </DialogHeader>
 
