@@ -3,10 +3,11 @@ import { Link } from "react-router-dom";
 import { ShoppingCart, Menu, X, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import { useCart } from "@/contexts/CartContext";
 import LocationModal from "./LocationModal";
 
 export default function Header() {
-  const [cartItems, setCartItems] = useState(0);
+  const { getTotalItems } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [showLocationModal, setShowLocationModal] = useState(false);
 
@@ -69,14 +70,12 @@ export default function Header() {
               variant="outline"
               size="sm"
               className="relative"
-              onClick={() => {
-                // Cart functionality will be implemented
-              }}
+              onClick={() => setShowLocationModal(true)}
             >
               <ShoppingCart className="w-4 h-4" />
-              {cartItems > 0 && (
+              {getTotalItems() > 0 && (
                 <span className="absolute -top-2 -right-2 bg-brand-pink text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {cartItems}
+                  {getTotalItems()}
                 </span>
               )}
             </Button>
@@ -96,14 +95,12 @@ export default function Header() {
               variant="outline"
               size="sm"
               className="relative"
-              onClick={() => {
-                // Cart functionality will be implemented
-              }}
+              onClick={() => setShowLocationModal(true)}
             >
               <ShoppingCart className="w-4 h-4" />
-              {cartItems > 0 && (
+              {getTotalItems() > 0 && (
                 <span className="absolute -top-2 -right-2 bg-brand-pink text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                  {cartItems}
+                  {getTotalItems()}
                 </span>
               )}
             </Button>
