@@ -160,18 +160,39 @@ export default function HeaderCartModal({
           ))}
         </CardContent>
 
-        <div className="p-4 border-t space-y-4">
-          <div className="flex items-center justify-between text-lg font-semibold">
-            <span>Total:</span>
-            <span className="text-brand-brown">
-              ${getSubtotal().toFixed(2)}
-            </span>
+        <CardContent className="pt-4 space-y-2">
+          <div className="flex justify-between text-lg font-bold text-cafe-gray-900">
+            <span>Subtotal</span>
+            <span>${getSubtotal().toFixed(2)}</span>
           </div>
+          {getSubtotal() > 150 && (
+            <div className="text-center p-3 bg-red-50 border border-red-200 rounded-lg">
+              <p className="text-sm text-red-700 font-medium mb-2">
+                Orders over $150 must call the store
+              </p>
+              <a
+                href="tel:+19089330123"
+                className="text-sm text-red-600 hover:text-red-800 font-medium underline"
+              >
+                Call (908) 933-0123
+              </a>
+              <p className="text-xs text-red-600 mt-1">
+                We're sorry for the inconvenience!
+              </p>
+            </div>
+          )}
+        </CardContent>
+
+        <div className="p-6 pt-0 space-y-3">
           <Button
-            className="w-full bg-brand-brown hover:bg-brand-brown/90 text-white"
+            className="w-full btn-primary"
             onClick={handleCheckout}
+            disabled={getSubtotal() > 150}
           >
-            Proceed to Checkout
+            Checkout - ${getSubtotal().toFixed(2)}
+          </Button>
+          <Button variant="outline" className="w-full" onClick={onClose}>
+            Continue Shopping
           </Button>
         </div>
       </Card>
