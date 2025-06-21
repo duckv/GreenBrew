@@ -401,9 +401,10 @@ export default function FeaturedMenu() {
       </div>
 
       {/* Location Modal */}
-      {showLocationModal && (
-        <LocationModal onClose={() => setShowLocationModal(false)} />
-      )}
+      <LocationModal
+        isOpen={showLocationModal}
+        onClose={() => setShowLocationModal(false)}
+      />
     </section>
   );
 }
