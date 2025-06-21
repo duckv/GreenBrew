@@ -1,5 +1,8 @@
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { MapPin, Clock } from "lucide-react";
+import LocationModal from "./LocationModal";
 
 export default function HeroSection() {
   return (
