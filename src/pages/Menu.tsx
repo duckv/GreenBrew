@@ -47,6 +47,39 @@ interface CustomizationOption {
 }
 
 const menuItems: MenuItem[] = [
+  // Pastries Section
+  {
+    id: "pt1",
+    name: "Butter Croissant",
+    price: 4.5,
+    description: "Flaky, buttery croissant baked fresh daily",
+    image:
+      "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "pastry",
+    isPopular: true,
+    allergens: ["gluten", "dairy", "eggs"],
+  },
+  {
+    id: "pt2",
+    name: "Almond Croissant",
+    price: 5.25,
+    description: "Buttery croissant filled with almond cream",
+    image:
+      "https://images.unsplash.com/photo-1586444248902-2f64eddc13df?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "pastry",
+    allergens: ["gluten", "dairy", "eggs", "nuts"],
+  },
+  {
+    id: "pt3",
+    name: "Danish Pastry",
+    price: 4.75,
+    description: "Sweet pastry with seasonal fruit filling",
+    image:
+      "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "pastry",
+    allergens: ["gluten", "dairy", "eggs"],
+  },
+
   // Gelato Section
   {
     id: "g1",
@@ -57,7 +90,7 @@ const menuItems: MenuItem[] = [
       "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "gelato",
     isPopular: true,
-    allergens: ["nuts"],
+    allergens: ["nuts", "dairy"],
   },
   {
     id: "g2",
@@ -101,6 +134,7 @@ const menuItems: MenuItem[] = [
       "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "ice-cream",
     isPopular: true,
+    allergens: ["dairy", "eggs"],
   },
   {
     id: "i2",
@@ -110,6 +144,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1576506295286-5cda18df43e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "ice-cream",
+    allergens: ["dairy"],
   },
   {
     id: "i3",
@@ -119,6 +154,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "ice-cream",
+    allergens: ["dairy", "gluten"],
   },
 
   // Coffee Section
@@ -130,6 +166,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "coffee",
+    allergens: [],
   },
   {
     id: "c2",
@@ -140,6 +177,7 @@ const menuItems: MenuItem[] = [
       "https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "coffee",
     isPopular: true,
+    allergens: ["dairy"],
   },
   {
     id: "c3",
@@ -149,6 +187,40 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "coffee",
+    allergens: ["dairy"],
+  },
+
+  // Sweets Section
+  {
+    id: "s1",
+    name: "Chocolate Brownie",
+    price: 5.95,
+    description: "Rich chocolate brownie with walnuts",
+    image:
+      "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "sweets",
+    allergens: ["nuts", "gluten", "dairy", "eggs"],
+  },
+  {
+    id: "s2",
+    name: "Tiramisu",
+    price: 7.95,
+    description: "Classic Italian coffee-flavored dessert",
+    image:
+      "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "sweets",
+    isPopular: true,
+    allergens: ["dairy", "eggs", "gluten"],
+  },
+  {
+    id: "s3",
+    name: "Cannoli",
+    price: 4.95,
+    description: "Crispy shell filled with sweet ricotta cream",
+    image:
+      "https://images.unsplash.com/photo-1578985545062-69928b1d9587?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+    category: "sweets",
+    allergens: ["dairy", "gluten", "eggs"],
   },
 
   // Tea Section
@@ -160,6 +232,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "tea",
+    allergens: [],
   },
   {
     id: "t2",
@@ -169,6 +242,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1597318045520-7d36f2b7fcbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "tea",
+    allergens: [],
   },
 
   // Breads Section
@@ -181,6 +255,7 @@ const menuItems: MenuItem[] = [
       "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "breads",
     isPopular: true,
+    allergens: ["gluten"],
   },
   {
     id: "b2",
@@ -190,6 +265,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "breads",
+    allergens: ["gluten"],
   },
 
   // Breakfast Section
@@ -202,6 +278,7 @@ const menuItems: MenuItem[] = [
       "https://images.unsplash.com/photo-1525351484163-7529414344d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "breakfast",
     isPopular: true,
+    allergens: ["gluten"],
   },
   {
     id: "br2",
@@ -211,6 +288,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1582196016295-f8c8bd4b3a99?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "breakfast",
+    allergens: ["gluten", "dairy", "eggs"],
   },
 
   // Lunch Section
@@ -222,6 +300,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1553909489-cd47e0ef937f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "lunch",
+    allergens: ["gluten"],
   },
   {
     id: "l2",
@@ -231,6 +310,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "lunch",
+    allergens: ["dairy", "gluten", "eggs"],
   },
 
   // Pizza Section
@@ -243,6 +323,7 @@ const menuItems: MenuItem[] = [
       "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "pizza",
     isPopular: true,
+    allergens: ["gluten", "dairy"],
   },
   {
     id: "p2",
@@ -252,28 +333,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1628840042765-356cda07504e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "pizza",
-  },
-
-  // Sweets Section
-  {
-    id: "s1",
-    name: "Chocolate Brownie",
-    price: 5.95,
-    description: "Rich chocolate brownie with walnuts",
-    image:
-      "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "sweets",
-    allergens: ["nuts"],
-  },
-  {
-    id: "s2",
-    name: "Tiramisu",
-    price: 7.95,
-    description: "Classic Italian coffee-flavored dessert",
-    image:
-      "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
-    category: "sweets",
-    isPopular: true,
+    allergens: ["gluten", "dairy"],
   },
 
   // Seasonal Section
@@ -286,6 +346,7 @@ const menuItems: MenuItem[] = [
       "https://images.unsplash.com/photo-1572490122747-3968b75cc699?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "seasonal",
     isPopular: true,
+    allergens: ["dairy"],
   },
   {
     id: "se2",
@@ -295,6 +356,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1514517604298-cf80e0fb7d4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "seasonal",
+    allergens: ["gluten", "dairy", "eggs"],
   },
 ];
 
@@ -643,7 +705,8 @@ function MenuItemCard({
           {item.description}
         </p>
 
-        {item.allergens && (
+        {/* Allergens Section */}
+        {item.allergens && item.allergens.length > 0 && (
           <div className="mb-4">
             <p className="text-xs text-cafe-gray-500 mb-1">Contains:</p>
             <div className="flex flex-wrap gap-1">
