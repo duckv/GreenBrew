@@ -9,9 +9,24 @@ import HeaderCartModal from "./HeaderCartModal";
 
 export default function Header() {
   const { getTotalItems } = useCart();
+  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [showLocationModal, setShowLocationModal] = useState(false);
   const [showCartModal, setShowCartModal] = useState(false);
+
+  const handleOrderOnline = () => {
+    // Check if user info exists, if not show location modal first
+    const storedUserInfo = localStorage.getItem("userInfo");
+    const storedOrderType = localStorage.getItem("orderType");
+
+    if (storedUserInfo && storedOrderType) {
+      // User already has location set, go directly to menu
+      navigate("/menu");
+    } else {
+      // Show location modal first
+      setShowLocationModal(true);
+    }
+  };
 
   const navigation = [
     { name: "Home", href: "/" },
