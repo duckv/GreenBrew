@@ -759,10 +759,26 @@ function MenuItemCard({
     }, 0);
   };
 
+  // Get customization options for this item's category
+  const itemCustomizationOptions =
+    customizationOptionsByCategory[item.category] ||
+    customizationOptionsByCategory["nothing"];
+
+  const getTotalCustomizationPrice = () => {
+    return selectedCustomizations.reduce((total, optionId) => {
+      const option = itemCustomizationOptions.find(
+        (opt) => opt.id === optionId,
+      );
+      return total + (option?.price || 0);
+    }, 0);
+  };
+
   const getSelectedCustomizationNames = () => {
     return selectedCustomizations
       .map((optionId) => {
-        const option = customizationOptions.find((opt) => opt.id === optionId);
+        const option = itemCustomizationOptions.find(
+          (opt) => opt.id === optionId,
+        );
         return option?.name;
       })
       .filter(Boolean)
@@ -770,7 +786,7 @@ function MenuItemCard({
   };
 
   return (
-    <Card className="card-elevated group hover:scale-105 transition-all duration-300">
+    <Card className="card-elevated group hover:scale-105 transition-all duration-300 h-full flex flex-col">
       <div className="relative overflow-hidden rounded-t-lg">
         <img
           src={item.image}
@@ -784,7 +800,7 @@ function MenuItemCard({
         )}
       </div>
 
-      <CardContent className="p-4 md:p-6">
+      <CardContent className="p-4 md:p-6 flex-1 flex flex-col">
         <div className="flex justify-between items-start mb-3">
           <h3 className="font-heading text-lg md:text-xl font-semibold text-cafe-gray-900">
             {item.name}
@@ -799,18 +815,22 @@ function MenuItemCard({
         </p>
 
         {/* Allergens Section */}
-        {item.allergens && item.allergens.length > 0 && (
-          <div className="mb-4">
-            <p className="text-xs text-cafe-gray-500 mb-1">Contains:</p>
-            <div className="flex flex-wrap gap-1">
-              {item.allergens.map((allergen) => (
-                <Badge key={allergen} variant="secondary" className="text-xs">
-                  {allergen}
-                </Badge>
-              ))}
+        <div className="mb-4 flex-1">
+          {item.allergens && item.allergens.length > 0 ? (
+            <div>
+              <p className="text-xs text-cafe-gray-500 mb-1">Contains:</p>
+              <div className="flex flex-wrap gap-1">
+                {item.allergens.map((allergen) => (
+                  <Badge key={allergen} variant="secondary" className="text-xs">
+                    {allergen}
+                  </Badge>
+                ))}
+              </div>
             </div>
-          </div>
-        )}
+          ) : (
+            <div className="h-6"></div>
+          )}
+        </div>
 
         {/* Quantity Controls */}
         <div className="flex items-center justify-center space-x-3 mb-4">
@@ -835,7 +855,7 @@ function MenuItemCard({
         </div>
 
         {/* Action Buttons */}
-        <div className="space-y-2">
+        <div className="space-y-2 mt-auto">
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button
@@ -855,7 +875,7 @@ function MenuItemCard({
               </DialogHeader>
 
               <div className="space-y-4 max-h-96 overflow-y-auto">
-                {customizationOptions.map((option) => (
+                {itemCustomizationOptions.map((option) => (
                   <div key={option.id} className="flex items-center space-x-3">
                     <Checkbox
                       id={option.id}
