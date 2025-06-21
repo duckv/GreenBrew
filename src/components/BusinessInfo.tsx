@@ -28,7 +28,7 @@ export default function BusinessInfo() {
           <div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-cafe-gray-900 mb-6">
               Your Neighborhood
-              <span className="text-brand-pink block">Bread & Brew Shop</span>
+              <span className="text-pink-500 block">Bread & Brew Shop</span>
             </h2>
 
             <p className="text-lg text-cafe-gray-600 mb-8 leading-relaxed">

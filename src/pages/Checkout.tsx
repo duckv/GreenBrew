@@ -36,7 +36,14 @@ interface CartItem {
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const { cart, updateQuantity, removeFromCart, getTotalItems, getTotalPrice, clearCart } = useCart();
+  const {
+    cart,
+    updateQuantity,
+    removeFromCart,
+    getTotalItems,
+    getTotalPrice,
+    clearCart,
+  } = useCart();
   const [userInfo, setUserInfo] = useState<any>(null);
   const [orderType, setOrderType] = useState<string | null>(null);
   const [paymentMethod, setPaymentMethod] = useState("card");
@@ -89,7 +96,9 @@ export default function Checkout() {
 
   const handlePlaceOrder = async () => {
     if (getSubtotal() > 150) {
-      alert("Orders over $150 must call the store at (908) 933-0123. We're sorry for the inconvenience!");
+      alert(
+        "Orders over $150 must call the store at (908) 933-0123. We're sorry for the inconvenience!",
+      );
       return;
     }
 
@@ -128,7 +137,7 @@ export default function Checkout() {
     return (
       <div className="min-h-screen bg-cafe-gray-50">
         <Header />
-      <main className="section-padding">
+        <main className="section-padding">
           <div className="container-custom text-center">
             <h1 className="font-heading text-3xl font-bold text-cafe-gray-900 mb-4">
               Your cart is empty
@@ -150,7 +159,7 @@ export default function Checkout() {
     <div className="min-h-screen bg-cafe-gray-50">
       <Header />
 
-      <main className={"section-padding\""}>
+      <main className={'section-padding"'}>
         <div className="container-custom">
           <div className="mb-8">
             <h1 className="font-heading text-3xl md:text-4xl font-bold text-cafe-gray-900 mb-4">
@@ -299,7 +308,9 @@ export default function Checkout() {
                       {[15, 18, 23].map((percentage) => (
                         <Button
                           key={percentage}
-                          variant={tipPercentage === percentage ? "default" : "outline"}
+                          variant={
+                            tipPercentage === percentage ? "default" : "outline"
+                          }
                           className={`${
                             tipPercentage === percentage
                               ? "bg-brand-brown text-white"
@@ -383,7 +394,7 @@ export default function Checkout() {
                                 onClick={() =>
                                   updateQuantity(
                                     cartItem.item.id,
-                                    cartItem.quantity - 1,
+                                    Math.max(1, cartItem.quantity - 1),
                                   )
                                 }
                               >
@@ -396,14 +407,21 @@ export default function Checkout() {
                                 variant="outline"
                                 size="sm"
                                 className="w-6 h-6 p-0 rounded-full"
-                            onClick={() =>
-                              updateQuantity(
-                                cartItem.item.id,
-                                Math.max(1, cartItem.quantity - 1)
-                              )
-                            }
+                                onClick={() =>
+                                  updateQuantity(
+                                    cartItem.item.id,
+                                    cartItem.quantity + 1,
+                                  )
+                                }
+                              >
+                                <Plus className="w-3 h-3" />
+                              </Button>
+                            </div>
+                            <Button
+                              variant="ghost"
+                              size="sm"
                               className="text-red-600 hover:text-red-700 p-1"
-                          onClick={() => removeFromCart(cartItem.item.id)}
+                              onClick={() => removeFromCart(cartItem.item.id)}
                             >
                               <Trash2 className="w-4 h-4" />
                             </Button>

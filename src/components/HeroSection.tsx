@@ -18,7 +18,7 @@ export default function HeroSection() {
       {/* Content */}
       <div className="relative z-10 text-center text-white max-w-4xl mx-auto px-6">
         <h1 className="font-heading text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-          Artisan Breads, <span className="text-brand-pink">Perfect Brews</span>
+          Artisan Breads, <span className="text-pink-500">Perfect Brews</span>
         </h1>
 
         <p className="text-lg md:text-xl mb-8 text-gray-200 max-w-2xl mx-auto leading-relaxed">
