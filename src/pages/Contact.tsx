@@ -43,7 +43,7 @@ export default function Contact() {
     <div className="min-h-screen bg-cafe-gray-50">
       <Header />
 
-      <main className="py-8 px-4 sm:px-6 lg:px-8">
+      <main className="section-padding">
         <div className="container-custom">
           {/* Header */}
           <div className="text-center mb-12">

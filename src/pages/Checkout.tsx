@@ -174,7 +174,7 @@ export default function Checkout() {
     <div className="min-h-screen bg-cafe-gray-50">
       <Header />
 
-      <main className="section-padding">
+      <main className={'section-padding"'}>
         <div className="container-custom">
           <div className="mb-8">
             <h1 className="font-heading text-3xl md:text-4xl font-bold text-cafe-gray-900 mb-4">

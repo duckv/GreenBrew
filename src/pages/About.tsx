@@ -35,7 +35,7 @@ export default function About() {
     <div className="min-h-screen bg-cafe-gray-50">
       <Header />
 
-      <main className="py-8 px-4 sm:px-6 lg:px-8">
+      <main className="section-padding">
         <div className="container-custom">
           {/* Hero Section */}
           <div className="text-center mb-16">

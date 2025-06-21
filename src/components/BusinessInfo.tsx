@@ -104,16 +104,26 @@ export default function BusinessInfo() {
           <div className="relative">
             <Card className="card-elevated overflow-hidden">
               <div className="aspect-[4/3] bg-gradient-to-br from-cafe-gray-200 to-cafe-gray-300 relative">
-                {/* Placeholder for map - in real implementation, integrate Google Maps */}
+                {/* Map with address display */}
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-brand-brown mx-auto mb-4" />
-                    <p className="text-cafe-gray-600 font-medium">
-                      Interactive Map
-                    </p>
-                    <p className="text-sm text-cafe-gray-500">
-                      Click to view directions
-                    </p>
+                    <div className="text-cafe-gray-700 font-medium mb-2">
+                      Bread N' Br☕︎w
+                    </div>
+                    <div className="text-sm text-cafe-gray-600 mb-4">
+                      512 Springfield Ave
+                      <br />
+                      Berkeley Heights, NJ 07922
+                    </div>
+                    <a
+                      href="https://maps.google.com/maps?q=512+Springfield+Ave+Berkeley+Heights+NJ+07922"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-sm text-brand-brown hover:text-brand-brown-dark font-medium underline"
+                    >
+                      Open in Maps
+                    </a>
                   </div>
                 </div>
 
