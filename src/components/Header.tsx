@@ -23,10 +23,10 @@ export default function Header() {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2">
             <div className="w-8 h-8 md:w-10 md:h-10 bg-brand-pink rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg md:text-xl">R</span>
+              <span className="text-white font-bold text-lg md:text-xl">B</span>
             </div>
             <span className="font-heading text-xl md:text-2xl font-bold text-brand-brown">
-              Reza's Café
+              Bread N' Br☕︎w
             </span>
           </Link>
 
@@ -48,20 +48,20 @@ export default function Header() {
             {/* Contact Info */}
             <div className="flex items-center space-x-4 text-sm text-cafe-gray-600">
               <a
-                href="tel:+1234567890"
+                href="tel:+19089330123"
                 className="flex items-center space-x-1 hover:text-brand-brown transition-colors"
               >
                 <Phone className="w-4 h-4" />
-                <span>(123) 456-7890</span>
+                <span>(908) 933-0123</span>
               </a>
               <a
-                href="https://maps.google.com"
+                href="https://maps.google.com/maps?q=512+Springfield+Ave+Berkeley+Heights+NJ+07922"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-1 hover:text-brand-brown transition-colors"
               >
                 <MapPin className="w-4 h-4" />
-                <span>Location</span>
+                <span>Berkeley Heights</span>
               </a>
             </div>
 
@@ -133,14 +133,14 @@ export default function Header() {
 
                   <div className="mt-8 space-y-4">
                     <a
-                      href="tel:+1234567890"
+                      href="tel:+19089330123"
                       className="flex items-center space-x-2 text-cafe-gray-600 hover:text-brand-brown transition-colors"
                     >
                       <Phone className="w-4 h-4" />
-                      <span>(123) 456-7890</span>
+                      <span>(908) 933-0123</span>
                     </a>
                     <a
-                      href="https://maps.google.com"
+                      href="https://maps.google.com/maps?q=512+Springfield+Ave+Berkeley+Heights+NJ+07922"
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center space-x-2 text-cafe-gray-600 hover:text-brand-brown transition-colors"
