@@ -26,7 +26,6 @@ interface MenuItem {
     | "pizza"
     | "sweets"
     | "seasonal";
-  rating: number;
   isPopular?: boolean;
   allergens?: string[];
 }
