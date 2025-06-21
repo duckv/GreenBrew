@@ -91,23 +91,49 @@ const featuredItems: MenuItem[] = [
   },
 ];
 
-// Customization options for featured items
-const customizationOptions: CustomizationOption[] = [
-  { id: "nothing", name: "Nothing", price: 0 },
-  { id: "extra-shot", name: "Extra Shot", price: 1.5 },
-  { id: "decaf", name: "Make it Decaf", price: 0 },
-  { id: "extra-hot", name: "Extra Hot", price: 0 },
-  { id: "extra-foam", name: "Extra Foam", price: 0 },
-  { id: "oat-milk", name: "Oat Milk", price: 0.75 },
-  { id: "almond-milk", name: "Almond Milk", price: 0.5 },
-  { id: "soy-milk", name: "Soy Milk", price: 0.5 },
-  { id: "coconut-milk", name: "Coconut Milk", price: 0.5 },
-  { id: "vanilla-syrup", name: "Vanilla Syrup", price: 0.5 },
-  { id: "caramel-syrup", name: "Caramel Syrup", price: 0.5 },
-  { id: "hazelnut-syrup", name: "Hazelnut Syrup", price: 0.5 },
-  { id: "extra-topping", name: "Extra Toppings", price: 1.0 },
-  { id: "whipped-cream", name: "Whipped Cream", price: 0.5 },
-];
+// Category-specific customization options for featured items
+const customizationOptionsByCategory: Record<string, CustomizationOption[]> = {
+  coffee: [
+    { id: "nothing", name: "Nothing", price: 0 },
+    { id: "extra-shot", name: "Extra Shot", price: 1.5 },
+    { id: "decaf", name: "Make it Decaf", price: 0 },
+    { id: "extra-hot", name: "Extra Hot", price: 0 },
+    { id: "extra-foam", name: "Extra Foam", price: 0 },
+    { id: "oat-milk", name: "Oat Milk", price: 0.75 },
+    { id: "almond-milk", name: "Almond Milk", price: 0.5 },
+    { id: "soy-milk", name: "Soy Milk", price: 0.5 },
+    { id: "coconut-milk", name: "Coconut Milk", price: 0.5 },
+    { id: "vanilla-syrup", name: "Vanilla Syrup", price: 0.5 },
+    { id: "caramel-syrup", name: "Caramel Syrup", price: 0.5 },
+    { id: "hazelnut-syrup", name: "Hazelnut Syrup", price: 0.5 },
+    { id: "whipped-cream", name: "Whipped Cream", price: 0.5 },
+  ],
+  gelato: [
+    { id: "nothing", name: "Nothing", price: 0 },
+    { id: "extra-scoop", name: "Extra Scoop", price: 3.0 },
+    { id: "cone-upgrade", name: "Waffle Cone", price: 1.5 },
+    { id: "toppings", name: "Chocolate Chips", price: 0.75 },
+    { id: "whipped-cream", name: "Whipped Cream", price: 0.5 },
+    { id: "nuts", name: "Crushed Nuts", price: 0.75 },
+  ],
+  "ice-cream": [
+    { id: "nothing", name: "Nothing", price: 0 },
+    { id: "extra-scoop", name: "Extra Scoop", price: 3.0 },
+    { id: "cone-upgrade", name: "Waffle Cone", price: 1.5 },
+    { id: "hot-fudge", name: "Hot Fudge", price: 1.0 },
+    { id: "caramel-sauce", name: "Caramel Sauce", price: 1.0 },
+    { id: "whipped-cream", name: "Whipped Cream", price: 0.5 },
+    { id: "cherry", name: "Cherry on Top", price: 0.25 },
+    { id: "nuts", name: "Crushed Nuts", price: 0.75 },
+  ],
+  pastry: [
+    { id: "nothing", name: "Nothing", price: 0 },
+    { id: "heated", name: "Heat It Up", price: 0 },
+    { id: "butter", name: "Extra Butter", price: 0.5 },
+    { id: "jam", name: "Jam on Side", price: 0.75 },
+    { id: "honey", name: "Honey Drizzle", price: 0.5 },
+  ],
+};
 
 interface FeaturedItemCardProps {
   item: MenuItem;
