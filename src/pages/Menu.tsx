@@ -645,7 +645,7 @@ export default function Menu() {
                   item={item}
                   quantity={quantities[item.id] || 1}
                   onUpdateQuantity={updateQuantity}
-                  onAddToCart={addToCart}
+                  onAddToCart={handleAddToCart}
                 />
               ))}
             </div>
