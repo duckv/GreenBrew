@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import { ShoppingCart, X, Plus, Minus, Trash2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
 import { useCart } from "@/contexts/CartContext";
 
@@ -30,6 +31,13 @@ export default function HeaderCartModal({
     } else {
       navigate("/checkout");
     }
+  };
+
+  const getSubtotal = () => {
+    return cart.reduce(
+      (total, cartItem) => total + cartItem.item.price * cartItem.quantity,
+      0,
+    );
   };
 
   if (!isOpen) return null;
@@ -70,7 +78,7 @@ export default function HeaderCartModal({
   }
 
   return (
-    <div className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center p-3 sm:p-4">
+    <div className="fixed inset-0 bg-black/50 z-50 flex items-end md:items-center justify-center p-4">
       <Card className="w-full max-w-md max-h-[80vh] flex flex-col">
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
           <CardTitle className="text-lg">Your Cart ({totalItems})</CardTitle>
@@ -132,60 +140,38 @@ export default function HeaderCartModal({
                         <Plus className="w-3 h-3" />
                       </Button>
                     </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      className="text-red-600 hover:text-red-700 p-1 h-6 w-6"
-                      onClick={() => removeFromCart(cartItem.item.id)}
-                    >
-                      <Trash2 className="w-3 h-3" />
-                    </Button>
+                    <div className="flex items-center space-x-2">
+                      <span className="text-xs font-medium text-brand-brown">
+                        ${(cartItem.item.price * cartItem.quantity).toFixed(2)}
+                      </span>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="w-6 h-6 p-0 text-red-500 hover:text-red-700"
+                        onClick={() => removeFromCart(cartItem.item.id)}
+                      >
+                        <Trash2 className="w-3 h-3" />
+                      </Button>
+                    </div>
                   </div>
                 </div>
-                <div className="text-right flex-shrink-0">
-                  <span className="font-medium text-cafe-gray-900 text-sm">
-                    ${(cartItem.item.price * cartItem.quantity).toFixed(2)}
-                  </span>
-                </div>
               </div>
-              <Separator />
             </div>
           ))}
-
-          <div className="pt-4 space-y-2">
-            <div className="flex justify-between text-lg font-bold text-cafe-gray-900">
-              <span>Subtotal</span>
-              <span>${getTotalPrice().toFixed(2)}</span>
-            </div>
-            {getTotalPrice() > 150 && (
-              <div className="text-center p-3 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-sm text-red-700 font-medium mb-2">
-                  Orders over $150 must call the store
-                </p>
-                <a
-                  href="tel:+19089330123"
-                  className="text-sm text-red-600 hover:text-red-800 font-medium underline"
-                >
-                  Call (908) 933-0123
-                </a>
-                <p className="text-xs text-red-600 mt-1">
-                  We're sorry for the inconvenience!
-                </p>
-              </div>
-            )}
-          </div>
         </CardContent>
 
-        <div className="p-6 pt-0 space-y-3">
+        <div className="p-4 border-t space-y-4">
+          <div className="flex items-center justify-between text-lg font-semibold">
+            <span>Total:</span>
+            <span className="text-brand-brown">
+              ${getSubtotal().toFixed(2)}
+            </span>
+          </div>
           <Button
-            className="w-full btn-primary"
+            className="w-full bg-brand-brown hover:bg-brand-brown/90 text-white"
             onClick={handleCheckout}
-            disabled={getTotalPrice() > 150}
           >
-            Checkout - ${getTotalPrice().toFixed(2)}
-          </Button>
-          <Button variant="outline" className="w-full" onClick={onClose}>
-            Continue Shopping
+            Proceed to Checkout
           </Button>
         </div>
       </Card>
