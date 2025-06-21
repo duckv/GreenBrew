@@ -128,10 +128,6 @@ export default function FeaturedMenu() {
                     Popular
                   </Badge>
                 )}
-                <div className="absolute top-3 right-3 bg-white/90 rounded-full px-2 py-1 flex items-center space-x-1">
-                  <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-                  <span className="text-xs font-medium">{item.rating}</span>
-                </div>
               </div>
 
               <CardContent className="p-6">
