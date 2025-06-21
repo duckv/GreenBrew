@@ -40,7 +40,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "gelato",
-    rating: 4.9,
     isPopular: true,
     allergens: ["nuts"],
   },
@@ -52,7 +51,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1488900128323-21503983a07e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "gelato",
-    rating: 4.7,
   },
   {
     id: "g3",
@@ -62,7 +60,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "gelato",
-    rating: 4.8,
   },
   {
     id: "g4",
@@ -72,7 +69,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "gelato",
-    rating: 4.6,
     isPopular: true,
   },
 
