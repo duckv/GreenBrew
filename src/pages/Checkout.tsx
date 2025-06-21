@@ -11,7 +11,7 @@ import { Separator } from "@/components/ui/separator";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import {
   CreditCard,
-  Truck2,
+  Truck,
   Store,
   Clock,
   MapPin,
@@ -165,7 +165,7 @@ export default function Checkout() {
                 </div>
               ) : (
                 <div className="flex items-center space-x-2">
-                  <Truck2 className="w-4 h-4" />
+                  <Truck className="w-4 h-4" />
                   <span>Delivery Order</span>
                 </div>
               )}

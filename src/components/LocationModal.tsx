@@ -9,7 +9,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { MapPin, Truck2, Store } from "lucide-react";
+import { MapPin, Truck, Store } from "lucide-react";
 
 interface LocationModalProps {
   isOpen: boolean;
@@ -102,7 +102,7 @@ export default function LocationModal({ isOpen, onClose }: LocationModalProps) {
                 className="w-full h-16 bg-orange-600 hover:bg-orange-700 text-white font-semibold text-lg"
                 onClick={() => handleDeliveryService("grubhub")}
               >
-                <span className="mr-3 text-xl">��️</span>
+                <span className="mr-3 text-xl">🍽️</span>
                 Order on Grubhub
               </Button>
             </div>
@@ -156,7 +156,7 @@ export default function LocationModal({ isOpen, onClose }: LocationModalProps) {
               }`}
               onClick={() => setSelectedOption("delivery")}
             >
-              <Truck2 className="w-6 h-6" />
+              <Truck className="w-6 h-6" />
               <span className="font-medium">Delivery</span>
             </Button>
           </div>

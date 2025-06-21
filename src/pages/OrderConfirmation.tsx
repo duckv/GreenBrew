@@ -11,7 +11,7 @@ import {
   MapPin,
   Phone,
   Mail,
-  Truck2,
+  Truck,
   Store,
   Download,
 } from "lucide-react";
@@ -125,7 +125,7 @@ Thank you for your order!
                   {order.orderType === "pickup" ? (
                     <Store className="w-6 h-6 text-blue-600" />
                   ) : (
-                    <Truck2 className="w-6 h-6 text-blue-600" />
+                    <Truck className="w-6 h-6 text-blue-600" />
                   )}
                   <div>
                     <p className="font-medium text-blue-900">
