@@ -5,6 +5,23 @@ import { MapPin, Clock } from "lucide-react";
 import LocationModal from "./LocationModal";
 
 export default function HeroSection() {
+  const navigate = useNavigate();
+  const [showLocationModal, setShowLocationModal] = useState(false);
+
+  const handleViewMenu = () => {
+    // Check if user info exists, if not show location modal first
+    const storedUserInfo = localStorage.getItem("userInfo");
+    const storedOrderType = localStorage.getItem("orderType");
+
+    if (storedUserInfo && storedOrderType) {
+      // User already has location set, go directly to menu
+      navigate("/menu");
+    } else {
+      // Show location modal first
+      setShowLocationModal(true);
+    }
+  };
+
   return (
     <section className="relative h-[70vh] md:h-[80vh] flex items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
