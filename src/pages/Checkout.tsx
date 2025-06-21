@@ -10,6 +10,7 @@ import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Separator } from "@/components/ui/separator";
 import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { useCart } from "@/contexts/CartContext";
 import {
   CreditCard,
   Truck,
@@ -35,7 +36,7 @@ interface CartItem {
 
 export default function Checkout() {
   const navigate = useNavigate();
-  const [cart, setCart] = useState<CartItem[]>([]);
+  const { cart, updateQuantity, removeFromCart, getTotalItems, getTotalPrice, clearCart } = useCart();
   const [userInfo, setUserInfo] = useState<any>(null);
   const [orderType, setOrderType] = useState<string | null>(null);
   const [paymentMethod, setPaymentMethod] = useState("card");
@@ -46,44 +47,21 @@ export default function Checkout() {
   const [showLocationModal, setShowLocationModal] = useState(false);
 
   useEffect(() => {
-    // Load cart and user info
-    const storedCart = localStorage.getItem("cart");
+    // Load user info
     const storedUserInfo = localStorage.getItem("userInfo");
     const storedOrderType = localStorage.getItem("orderType");
 
-    if (!storedCart || !storedUserInfo || !storedOrderType) {
+    if (!storedUserInfo || !storedOrderType || cart.length === 0) {
       navigate("/");
       return;
     }
 
-    setCart(JSON.parse(storedCart));
     setUserInfo(JSON.parse(storedUserInfo));
     setOrderType(storedOrderType);
-  }, [navigate]);
-
-  const updateQuantity = (itemId: string, newQuantity: number) => {
-    if (newQuantity === 0) {
-      setCart((prev) => prev.filter((item) => item.item.id !== itemId));
-    } else {
-      setCart((prev) =>
-        prev.map((cartItem) =>
-          cartItem.item.id === itemId
-            ? { ...cartItem, quantity: newQuantity }
-            : cartItem,
-        ),
-      );
-    }
-  };
-
-  const removeItem = (itemId: string) => {
-    setCart((prev) => prev.filter((item) => item.item.id !== itemId));
-  };
+  }, [navigate, cart]);
 
   const getSubtotal = () => {
-    return cart.reduce(
-      (total, cartItem) => total + cartItem.item.price * cartItem.quantity,
-      0,
-    );
+    return getTotalPrice();
   };
 
   const getTax = () => {
@@ -111,9 +89,7 @@ export default function Checkout() {
 
   const handlePlaceOrder = async () => {
     if (getSubtotal() > 150) {
-      alert(
-        "Orders over $150 must call the store at (908) 933-0123. We're sorry for the inconvenience!",
-      );
+      alert("Orders over $150 must call the store at (908) 933-0123. We're sorry for the inconvenience!");
       return;
     }
 
@@ -140,7 +116,7 @@ export default function Checkout() {
 
     // Store order and clear cart
     localStorage.setItem("currentOrder", JSON.stringify(order));
-    localStorage.removeItem("cart");
+    clearCart();
 
     setIsProcessing(false);
 
@@ -152,7 +128,7 @@ export default function Checkout() {
     return (
       <div className="min-h-screen bg-cafe-gray-50">
         <Header />
-        <main className="section-padding">
+      <main className="section-padding">
           <div className="container-custom text-center">
             <h1 className="font-heading text-3xl font-bold text-cafe-gray-900 mb-4">
               Your cart is empty
@@ -174,7 +150,7 @@ export default function Checkout() {
     <div className="min-h-screen bg-cafe-gray-50">
       <Header />
 
-      <main className={'section-padding"'}>
+      <main className={"section-padding\""}>
         <div className="container-custom">
           <div className="mb-8">
             <h1 className="font-heading text-3xl md:text-4xl font-bold text-cafe-gray-900 mb-4">
@@ -323,9 +299,7 @@ export default function Checkout() {
                       {[15, 18, 23].map((percentage) => (
                         <Button
                           key={percentage}
-                          variant={
-                            tipPercentage === percentage ? "default" : "outline"
-                          }
+                          variant={tipPercentage === percentage ? "default" : "outline"}
                           className={`${
                             tipPercentage === percentage
                               ? "bg-brand-brown text-white"
@@ -422,21 +396,14 @@ export default function Checkout() {
                                 variant="outline"
                                 size="sm"
                                 className="w-6 h-6 p-0 rounded-full"
-                                onClick={() =>
-                                  updateQuantity(
-                                    cartItem.item.id,
-                                    cartItem.quantity + 1,
-                                  )
-                                }
-                              >
-                                <Plus className="w-3 h-3" />
-                              </Button>
-                            </div>
-                            <Button
-                              variant="ghost"
-                              size="sm"
+                            onClick={() =>
+                              updateQuantity(
+                                cartItem.item.id,
+                                Math.max(1, cartItem.quantity - 1)
+                              )
+                            }
                               className="text-red-600 hover:text-red-700 p-1"
-                              onClick={() => removeItem(cartItem.item.id)}
+                          onClick={() => removeFromCart(cartItem.item.id)}
                             >
                               <Trash2 className="w-4 h-4" />
                             </Button>

@@ -17,7 +17,7 @@ export default function Footer() {
           {/* Brand & Description */}
           <div className="lg:col-span-1">
             <div className="mb-4">
-              <span className="font-heading text-xl font-bold text-white">
+              <span className="font-heading text-xl font-bold text-pink-500">
                 Bread N' Br☕︎w
               </span>
             </div>
