@@ -28,9 +28,7 @@ export default function BusinessInfo() {
           <div>
             <h2 className="font-heading text-3xl md:text-4xl font-bold text-cafe-gray-900 mb-6">
               Your Neighborhood
-              <span className="text-brand-pink block">
-                Bread & Brew Shop
-              </span>
+              <span className="text-brand-pink block">Bread & Brew Shop</span>
             </h2>
 
             <p className="text-lg text-cafe-gray-600 mb-8 leading-relaxed">
@@ -49,12 +47,12 @@ export default function BusinessInfo() {
                 <div>
                   <h3 className="font-medium text-cafe-gray-900">Location</h3>
                   <a
-                    href="https://maps.google.com"
+                    href="https://maps.google.com/maps?q=512+Springfield+Ave+Berkeley+Heights+NJ+07922"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-cafe-gray-600 hover:text-brand-brown transition-colors"
                   >
-                    123 Main Street, Downtown, City, State 12345
+                    512 Springfield Ave, Berkeley Heights, NJ 07922
                   </a>
                 </div>
               </div>
@@ -66,10 +64,10 @@ export default function BusinessInfo() {
                 <div>
                   <h3 className="font-medium text-cafe-gray-900">Phone</h3>
                   <a
-                    href="tel:+1234567890"
+                    href="tel:+19089330123"
                     className="text-cafe-gray-600 hover:text-brand-brown transition-colors"
                   >
-                    (123) 456-7890
+                    (908) 933-0123
                   </a>
                 </div>
               </div>
@@ -110,22 +108,22 @@ export default function BusinessInfo() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="text-center">
                     <MapPin className="w-12 h-12 text-brand-brown mx-auto mb-4" />
-                  <p className="text-cafe-gray-700">
-                    Bread N' Br☕︎w
-                    <br />
-                    512 Springfield Ave
-                    <br />
-                    Berkeley Heights, NJ 07922
-                  </p>
-                  <div className="mt-3 space-y-1">
+                    <p className="text-cafe-gray-600 font-medium">
+                      Interactive Map
+                    </p>
+                    <p className="text-sm text-cafe-gray-500">
+                      Click to view directions
+                    </p>
+                  </div>
+                </div>
+
+                {/* Overlay with store info */}
+                <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-6">
                   <h3 className="font-heading text-lg font-semibold text-cafe-gray-900 mb-2">
                     Bread N' Br☕︎w
                   </h3>
                   <p className="text-sm text-cafe-gray-600 mb-3">
                     512 Springfield Ave, Berkeley Heights
-                  </p>
-                  <p className="text-sm text-cafe-gray-600 mb-3">
-                    123 Main Street, Downtown
                   </p>
                   <div className="flex items-center justify-between">
                     <span className="inline-flex items-center text-sm text-green-600">
