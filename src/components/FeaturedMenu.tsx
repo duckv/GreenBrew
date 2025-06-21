@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Plus, Minus, Star } from "lucide-react";
 import LocationModal from "./LocationModal";
+import FloatingCart from "./FloatingCart";
 
 interface MenuItem {
   id: string;
@@ -85,13 +86,33 @@ export default function FeaturedMenu() {
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [showLocationModal, setShowLocationModal] = useState(false);
+  const [cart, setCart] = useState<Array<{ item: MenuItem; quantity: number }>>(
+    [],
+  );
+
+  // Load cart from localStorage on mount
+  useEffect(() => {
+    const storedCart = localStorage.getItem("cart");
+    if (storedCart) {
+      setCart(JSON.parse(storedCart));
+    }
+  }, []);
+
+  // Save cart to localStorage whenever it changes
+  useEffect(() => {
+    if (cart.length > 0) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart]);
 
   const filters = [
     { id: "all", label: "All Items" },
     { id: "gelato", label: "Gelato" },
     { id: "ice-cream", label: "Ice Cream" },
-    { id: "pastry", label: "Pastries" },
     { id: "coffee", label: "Coffee" },
+    { id: "tea", label: "Tea" },
+    { id: "pastry", label: "Pastries" },
+    { id: "breads", label: "Breads" },
   ];
 
   const filteredItems =
@@ -102,15 +123,48 @@ export default function FeaturedMenu() {
   const updateQuantity = (itemId: string, change: number) => {
     setQuantities((prev) => ({
       ...prev,
-      [itemId]: Math.max(0, (prev[itemId] || 0) + change),
+      [itemId]: Math.max(1, (prev[itemId] || 1) + change),
     }));
   };
 
   const addToCart = (item: MenuItem) => {
     const quantity = quantities[item.id] || 1;
-    // Cart functionality will be implemented
-    console.log(`Added ${quantity}x ${item.name} to cart`);
-    setQuantities((prev) => ({ ...prev, [item.id]: 0 }));
+    setCart((prev) => {
+      const existingItem = prev.find(
+        (cartItem) => cartItem.item.id === item.id,
+      );
+      if (existingItem) {
+        return prev.map((cartItem) =>
+          cartItem.item.id === item.id
+            ? { ...cartItem, quantity: cartItem.quantity + quantity }
+            : cartItem,
+        );
+      }
+      return [...prev, { item, quantity }];
+    });
+    setQuantities((prev) => ({ ...prev, [item.id]: 1 }));
+  };
+
+  const updateCartQuantity = (itemId: string, newQuantity: number) => {
+    if (newQuantity === 0) {
+      setCart((prev) => prev.filter((item) => item.item.id !== itemId));
+    } else {
+      setCart((prev) =>
+        prev.map((cartItem) =>
+          cartItem.item.id === itemId
+            ? { ...cartItem, quantity: newQuantity }
+            : cartItem,
+        ),
+      );
+    }
+  };
+
+  const removeFromCart = (itemId: string) => {
+    setCart((prev) => prev.filter((item) => item.item.id !== itemId));
+  };
+
+  const proceedToCheckout = () => {
+    setShowLocationModal(true);
   };
 
   return (
@@ -190,12 +244,12 @@ export default function FeaturedMenu() {
                       size="sm"
                       className="w-8 h-8 p-0 rounded-full"
                       onClick={() => updateQuantity(item.id, -1)}
-                      disabled={(quantities[item.id] || 0) === 0}
+                      disabled={(quantities[item.id] || 1) === 1}
                     >
                       <Minus className="w-3 h-3" />
                     </Button>
                     <span className="w-8 text-center font-medium">
-                      {quantities[item.id] || 0}
+                      {quantities[item.id] || 1}
                     </span>
                     <Button
                       variant="outline"
@@ -211,7 +265,6 @@ export default function FeaturedMenu() {
                     className="btn-primary"
                     size="sm"
                     onClick={() => addToCart(item)}
-                    disabled={(quantities[item.id] || 0) === 0}
                   >
                     Add to Cart
                   </Button>
@@ -239,6 +292,13 @@ export default function FeaturedMenu() {
       <LocationModal
         isOpen={showLocationModal}
         onClose={() => setShowLocationModal(false)}
+      />
+
+      <FloatingCart
+        cart={cart}
+        updateQuantity={updateCartQuantity}
+        removeItem={removeFromCart}
+        onCheckout={proceedToCheckout}
       />
     </section>
   );
