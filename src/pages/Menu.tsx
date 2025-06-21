@@ -39,6 +39,12 @@ interface MenuItem {
   allergens?: string[];
 }
 
+interface CustomizationOption {
+  id: string;
+  name: string;
+  price: number;
+}
+
 const menuItems: MenuItem[] = [
   // Gelato Section
   {
