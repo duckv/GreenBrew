@@ -288,6 +288,7 @@ function FeaturedItemCard({
 }
 
 export default function FeaturedMenu() {
+  const navigate = useNavigate();
   const { addToCart } = useCart();
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [showLocationModal, setShowLocationModal] = useState(false);
@@ -306,6 +307,20 @@ export default function FeaturedMenu() {
     const quantity = quantities[item.id] || 1;
     addToCart(item, quantity);
     setQuantities((prev) => ({ ...prev, [item.id]: 1 }));
+  };
+
+  const handleViewFullMenu = () => {
+    // Check if user info exists, if not show location modal first
+    const storedUserInfo = localStorage.getItem("userInfo");
+    const storedOrderType = localStorage.getItem("orderType");
+
+    if (storedUserInfo && storedOrderType) {
+      // User already has location set, go directly to menu
+      navigate("/menu");
+    } else {
+      // Show location modal first
+      setShowLocationModal(true);
+    }
   };
 
   return (
