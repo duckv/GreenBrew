@@ -654,13 +654,6 @@ export default function Menu() {
       </main>
 
       <Footer />
-
-      <FloatingCart
-        cart={cart}
-        updateQuantity={updateCartQuantity}
-        removeItem={removeFromCart}
-        onCheckout={proceedToCheckout}
-      />
     </div>
   );
 }
