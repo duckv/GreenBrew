@@ -58,14 +58,14 @@ export default function Contact() {
     <div className="min-h-screen bg-cafe-gray-50">
       <Header />
 
-      <main className="section-padding">
+      <main className="py-12 md:py-16 lg:py-20">
         <div className="container-custom">
           {/* Header */}
           <div className="text-center mb-12">
             <h1 className="font-heading text-4xl md:text-5xl font-bold text-cafe-gray-900 mb-6">
               Contact Us
             </h1>
-            <p className="text-lg text-cafe-gray-600 max-w-2xl mx-auto">
+            <p className="text-lg text-cafe-gray-600 max-w-2xl mx-auto leading-relaxed">
               We'd love to hear from you! Whether you have a question, feedback,
               or just want to say hello, we're here to help.
             </p>
