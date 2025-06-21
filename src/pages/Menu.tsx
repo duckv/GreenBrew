@@ -196,8 +196,14 @@ export default function Menu() {
     { id: "all", label: "All Items" },
     { id: "gelato", label: "Gelato" },
     { id: "ice-cream", label: "Ice Cream" },
-    { id: "pastry", label: "Pastries" },
     { id: "coffee", label: "Coffee" },
+    { id: "tea", label: "Tea" },
+    { id: "breads", label: "Breads" },
+    { id: "breakfast", label: "Breakfast" },
+    { id: "lunch", label: "Lunch" },
+    { id: "pizza", label: "Pizza" },
+    { id: "sweets", label: "Sweets" },
+    { id: "seasonal", label: "Seasonal" },
   ];
 
   const filteredItems = menuItems.filter((item) => {
@@ -212,7 +218,7 @@ export default function Menu() {
   const updateQuantity = (itemId: string, change: number) => {
     setQuantities((prev) => ({
       ...prev,
-      [itemId]: Math.max(0, (prev[itemId] || 0) + change),
+      [itemId]: Math.max(1, (prev[itemId] || 1) + change),
     }));
   };
 
@@ -392,12 +398,12 @@ export default function Menu() {
                         size="sm"
                         className="w-8 h-8 p-0 rounded-full"
                         onClick={() => updateQuantity(item.id, -1)}
-                        disabled={(quantities[item.id] || 0) === 0}
+                        disabled={(quantities[item.id] || 1) === 1}
                       >
                         <Minus className="w-3 h-3" />
                       </Button>
                       <span className="w-8 text-center font-medium">
-                        {quantities[item.id] || 0}
+                        {quantities[item.id] || 1}
                       </span>
                       <Button
                         variant="outline"
@@ -413,7 +419,6 @@ export default function Menu() {
                       className="btn-primary"
                       size="sm"
                       onClick={() => addToCart(item)}
-                      disabled={(quantities[item.id] || 0) === 0}
                     >
                       Add to Cart
                     </Button>
