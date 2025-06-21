@@ -61,12 +61,7 @@ export default function HeroSection() {
           <Button
             size="lg"
             className="btn-primary text-lg px-8 py-4"
-            onClick={() => {
-              // Navigate to menu with location selection
-              document
-                .getElementById("menu-section")
-                ?.scrollIntoView({ behavior: "smooth" });
-            }}
+            onClick={handleViewMenu}
           >
             View Menu
           </Button>
