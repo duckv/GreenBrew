@@ -84,24 +84,11 @@ const featuredItems: MenuItem[] = [
 
 export default function FeaturedMenu() {
   const { addToCart } = useCart();
-  const [selectedFilter, setSelectedFilter] = useState<string>("all");
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [showLocationModal, setShowLocationModal] = useState(false);
 
-  const filters = [
-    { id: "all", label: "All Items" },
-    { id: "gelato", label: "Gelato" },
-    { id: "ice-cream", label: "Ice Cream" },
-    { id: "coffee", label: "Coffee" },
-    { id: "tea", label: "Tea" },
-    { id: "pastry", label: "Pastries" },
-    { id: "breads", label: "Breads" },
-  ];
-
-  const filteredItems =
-    selectedFilter === "all"
-      ? featuredItems
-      : featuredItems.filter((item) => item.category === selectedFilter);
+  // Show only first 4 featured items
+  const displayItems = featuredItems.slice(0, 4);
 
   const updateQuantity = (itemId: string, change: number) => {
     setQuantities((prev) => ({
@@ -130,27 +117,9 @@ export default function FeaturedMenu() {
           </p>
         </div>
 
-        {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
-          {filters.map((filter) => (
-            <Button
-              key={filter.id}
-              variant={selectedFilter === filter.id ? "default" : "outline"}
-              className={`px-6 py-2 rounded-full transition-all duration-200 ${
-                selectedFilter === filter.id
-                  ? "bg-brand-brown text-white shadow-lg"
-                  : "border-brand-brown text-brand-brown hover:bg-brand-brown hover:text-white"
-              }`}
-              onClick={() => setSelectedFilter(filter.id)}
-            >
-              {filter.label}
-            </Button>
-          ))}
-        </div>
-
         {/* Featured Items Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {filteredItems.map((item) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 mb-12">
+          {displayItems.map((item) => (
             <Card
               key={item.id}
               className="card-elevated group hover:scale-105 transition-all duration-300"

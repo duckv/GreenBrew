@@ -1,15 +1,17 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ShoppingCart, Menu, X, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useCart } from "@/contexts/CartContext";
 import LocationModal from "./LocationModal";
+import HeaderCartModal from "./HeaderCartModal";
 
 export default function Header() {
   const { getTotalItems } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [showLocationModal, setShowLocationModal] = useState(false);
+  const [showCartModal, setShowCartModal] = useState(false);
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -25,7 +27,7 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="font-heading text-xl md:text-2xl font-bold text-brand-brown">
+            <span className="font-heading text-xl md:text-2xl font-bold text-pink-500">
               Bread N' Br☕︎w
             </span>
           </Link>
@@ -70,7 +72,7 @@ export default function Header() {
               variant="outline"
               size="sm"
               className="relative"
-              onClick={() => setShowLocationModal(true)}
+              onClick={() => setShowCartModal(true)}
             >
               <ShoppingCart className="w-4 h-4" />
               {getTotalItems() > 0 && (
@@ -95,7 +97,7 @@ export default function Header() {
               variant="outline"
               size="sm"
               className="relative"
-              onClick={() => setShowLocationModal(true)}
+              onClick={() => setShowCartModal(true)}
             >
               <ShoppingCart className="w-4 h-4" />
               {getTotalItems() > 0 && (
@@ -172,6 +174,11 @@ export default function Header() {
       <LocationModal
         isOpen={showLocationModal}
         onClose={() => setShowLocationModal(false)}
+      />
+
+      <HeaderCartModal
+        isOpen={showCartModal}
+        onClose={() => setShowCartModal(false)}
       />
     </header>
   );
