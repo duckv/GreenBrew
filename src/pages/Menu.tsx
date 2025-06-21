@@ -353,15 +353,16 @@ export default function Menu() {
 
   const categories = [
     { id: "all", label: "All Items" },
-    { id: "gelato", label: "Gelato" },
-    { id: "ice-cream", label: "Ice Cream" },
+    { id: "pastry", label: "Pastries" },
     { id: "coffee", label: "Coffee" },
+    { id: "sweets", label: "Sweets" },
     { id: "tea", label: "Tea" },
     { id: "breads", label: "Breads" },
     { id: "breakfast", label: "Breakfast" },
     { id: "lunch", label: "Lunch" },
     { id: "pizza", label: "Pizza" },
-    { id: "sweets", label: "Sweets" },
+    { id: "gelato", label: "Gelato" },
+    { id: "ice-cream", label: "Ice Cream" },
     { id: "seasonal", label: "Seasonal" },
   ];
 
