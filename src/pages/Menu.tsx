@@ -577,6 +577,38 @@ function MenuItemCard({
   onUpdateQuantity,
   onAddToCart,
 }: MenuItemCardProps) {
+  const [selectedCustomizations, setSelectedCustomizations] = useState<
+    string[]
+  >([]);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleCustomizationChange = (optionId: string, checked: boolean) => {
+    setSelectedCustomizations((prev) => {
+      if (checked) {
+        return [...prev, optionId];
+      } else {
+        return prev.filter((id) => id !== optionId);
+      }
+    });
+  };
+
+  const getTotalCustomizationPrice = () => {
+    return selectedCustomizations.reduce((total, optionId) => {
+      const option = customizationOptions.find((opt) => opt.id === optionId);
+      return total + (option?.price || 0);
+    }, 0);
+  };
+
+  const getSelectedCustomizationNames = () => {
+    return selectedCustomizations
+      .map((optionId) => {
+        const option = customizationOptions.find((opt) => opt.id === optionId);
+        return option?.name;
+      })
+      .filter(Boolean)
+      .join(", ");
+  };
+
   return (
     <Card className="card-elevated group hover:scale-105 transition-all duration-300">
       <div className="relative overflow-hidden rounded-t-lg">
@@ -643,17 +675,77 @@ function MenuItemCard({
 
         {/* Action Buttons */}
         <div className="space-y-2">
-          <Button
-            variant="outline"
-            className="w-full border-brand-brown text-brand-brown hover:bg-brand-brown hover:text-white"
-          >
-            Customize • Nothing +$0.00
-          </Button>
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-full border-brand-brown text-brand-brown hover:bg-brand-brown hover:text-white"
+              >
+                Customize
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-md">
+              <DialogHeader>
+                <DialogTitle className="text-xl font-semibold">
+                  Customize {item.name}
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="space-y-4 max-h-96 overflow-y-auto">
+                {customizationOptions.map((option) => (
+                  <div key={option.id} className="flex items-center space-x-3">
+                    <Checkbox
+                      id={option.id}
+                      checked={selectedCustomizations.includes(option.id)}
+                      onCheckedChange={(checked) =>
+                        handleCustomizationChange(option.id, checked as boolean)
+                      }
+                    />
+                    <Label
+                      htmlFor={option.id}
+                      className="flex-1 flex justify-between items-center cursor-pointer"
+                    >
+                      <span>{option.name}</span>
+                      <span className="text-brand-brown font-medium">
+                        {option.price === 0
+                          ? "+$0.00"
+                          : `+$${option.price.toFixed(2)}`}
+                      </span>
+                    </Label>
+                  </div>
+                ))}
+              </div>
+
+              {selectedCustomizations.length > 0 && (
+                <div className="border-t pt-4">
+                  <div className="flex justify-between items-center text-sm">
+                    <span>Selected: {getSelectedCustomizationNames()}</span>
+                    <span className="font-medium text-brand-brown">
+                      +${getTotalCustomizationPrice().toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              <Button
+                onClick={() => setIsDialogOpen(false)}
+                className="w-full bg-brand-brown hover:bg-brand-brown/90 text-white"
+              >
+                Apply Customizations
+              </Button>
+            </DialogContent>
+          </Dialog>
+
           <Button
             className="w-full bg-brand-brown hover:bg-brand-brown/90 text-white"
             onClick={() => onAddToCart(item)}
           >
             Add to Cart
+            {getTotalCustomizationPrice() > 0 && (
+              <span className="ml-2">
+                (+${getTotalCustomizationPrice().toFixed(2)})
+              </span>
+            )}
           </Button>
         </div>
       </CardContent>
