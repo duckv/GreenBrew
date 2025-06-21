@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import { ShoppingCart, Menu, X, Phone, MapPin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
+import LocationModal from "./LocationModal";
 
 export default function Header() {
   const [cartItems, setCartItems] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
+  const [showLocationModal, setShowLocationModal] = useState(false);
 
   const navigation = [
     { name: "Home", href: "/" },
@@ -83,7 +85,12 @@ export default function Header() {
             </Button>
 
             {/* Order Online CTA */}
-            <Button className="btn-primary">Order Online</Button>
+            <Button
+              className="btn-primary"
+              onClick={() => setShowLocationModal(true)}
+            >
+              Order Online
+            </Button>
           </div>
 
           {/* Mobile Menu */}
@@ -153,7 +160,10 @@ export default function Header() {
                   <div className="mt-auto pb-6">
                     <Button
                       className="btn-primary w-full"
-                      onClick={() => setIsOpen(false)}
+                      onClick={() => {
+                        setIsOpen(false);
+                        setShowLocationModal(true);
+                      }}
                     >
                       Order Online
                     </Button>
@@ -164,6 +174,11 @@ export default function Header() {
           </div>
         </div>
       </div>
+
+      <LocationModal
+        isOpen={showLocationModal}
+        onClose={() => setShowLocationModal(false)}
+      />
     </header>
   );
 }
