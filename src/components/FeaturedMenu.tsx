@@ -108,6 +108,182 @@ const customizationOptions: CustomizationOption[] = [
   { id: "whipped-cream", name: "Whipped Cream", price: 0.5 },
 ];
 
+interface FeaturedItemCardProps {
+  item: MenuItem;
+  quantity: number;
+  onUpdateQuantity: (itemId: string, change: number) => void;
+  onAddToCart: (item: MenuItem) => void;
+}
+
+function FeaturedItemCard({
+  item,
+  quantity,
+  onUpdateQuantity,
+  onAddToCart,
+}: FeaturedItemCardProps) {
+  const [selectedCustomizations, setSelectedCustomizations] = useState<
+    string[]
+  >([]);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
+  const handleCustomizationChange = (optionId: string, checked: boolean) => {
+    setSelectedCustomizations((prev) => {
+      if (checked) {
+        return [...prev, optionId];
+      } else {
+        return prev.filter((id) => id !== optionId);
+      }
+    });
+  };
+
+  const getTotalCustomizationPrice = () => {
+    return selectedCustomizations.reduce((total, optionId) => {
+      const option = customizationOptions.find((opt) => opt.id === optionId);
+      return total + (option?.price || 0);
+    }, 0);
+  };
+
+  const getSelectedCustomizationNames = () => {
+    return selectedCustomizations
+      .map((optionId) => {
+        const option = customizationOptions.find((opt) => opt.id === optionId);
+        return option?.name;
+      })
+      .filter(Boolean)
+      .join(", ");
+  };
+
+  return (
+    <Card className="card-elevated group hover:scale-105 transition-all duration-300">
+      <div className="relative overflow-hidden rounded-t-lg">
+        <img
+          src={item.image}
+          alt={item.name}
+          className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
+        />
+        {item.isPopular && (
+          <Badge className="absolute top-3 left-3 bg-brand-pink text-white">
+            Popular
+          </Badge>
+        )}
+      </div>
+
+      <CardContent className="p-4 md:p-6">
+        <div className="flex justify-between items-start mb-3">
+          <h3 className="font-heading text-lg md:text-xl font-semibold text-cafe-gray-900">
+            {item.name}
+          </h3>
+          <span className="text-lg font-bold text-brand-brown">
+            ${item.price.toFixed(2)}
+          </span>
+        </div>
+
+        <p className="text-cafe-gray-600 mb-4 text-sm md:text-base line-clamp-2">
+          {item.description}
+        </p>
+
+        {/* Quantity Controls */}
+        <div className="flex items-center justify-center space-x-3 mb-4">
+          <Button
+            variant="outline"
+            size="sm"
+            className="w-8 h-8 p-0 rounded-full"
+            onClick={() => onUpdateQuantity(item.id, -1)}
+            disabled={quantity === 1}
+          >
+            <Minus className="w-3 h-3" />
+          </Button>
+          <span className="w-8 text-center font-medium">{quantity}</span>
+          <Button
+            variant="outline"
+            size="sm"
+            className="w-8 h-8 p-0 rounded-full"
+            onClick={() => onUpdateQuantity(item.id, 1)}
+          >
+            <Plus className="w-3 h-3" />
+          </Button>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="space-y-2">
+          <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
+            <DialogTrigger asChild>
+              <Button
+                variant="outline"
+                className="w-full border-brand-brown text-brand-brown hover:bg-brand-brown hover:text-white"
+              >
+                Customize
+              </Button>
+            </DialogTrigger>
+            <DialogContent className="max-w-md">
+              <DialogHeader>
+                <DialogTitle className="text-xl font-semibold">
+                  Customize {item.name}
+                </DialogTitle>
+              </DialogHeader>
+
+              <div className="space-y-4 max-h-96 overflow-y-auto">
+                {customizationOptions.map((option) => (
+                  <div key={option.id} className="flex items-center space-x-3">
+                    <Checkbox
+                      id={`${item.id}-${option.id}`}
+                      checked={selectedCustomizations.includes(option.id)}
+                      onCheckedChange={(checked) =>
+                        handleCustomizationChange(option.id, checked as boolean)
+                      }
+                    />
+                    <Label
+                      htmlFor={`${item.id}-${option.id}`}
+                      className="flex-1 flex justify-between items-center cursor-pointer"
+                    >
+                      <span>{option.name}</span>
+                      <span className="text-brand-brown font-medium">
+                        {option.price === 0
+                          ? "+$0.00"
+                          : `+$${option.price.toFixed(2)}`}
+                      </span>
+                    </Label>
+                  </div>
+                ))}
+              </div>
+
+              {selectedCustomizations.length > 0 && (
+                <div className="border-t pt-4">
+                  <div className="flex justify-between items-center text-sm">
+                    <span>Selected: {getSelectedCustomizationNames()}</span>
+                    <span className="font-medium text-brand-brown">
+                      +${getTotalCustomizationPrice().toFixed(2)}
+                    </span>
+                  </div>
+                </div>
+              )}
+
+              <Button
+                onClick={() => setIsDialogOpen(false)}
+                className="w-full bg-brand-brown hover:bg-brand-brown/90 text-white"
+              >
+                Apply Customizations
+              </Button>
+            </DialogContent>
+          </Dialog>
+
+          <Button
+            className="w-full bg-brand-brown hover:bg-brand-brown/90 text-white"
+            onClick={() => onAddToCart(item)}
+          >
+            Add to Cart
+            {getTotalCustomizationPrice() > 0 && (
+              <span className="ml-2">
+                (+${getTotalCustomizationPrice().toFixed(2)})
+              </span>
+            )}
+          </Button>
+        </div>
+      </CardContent>
+    </Card>
+  );
+}
+
 export default function FeaturedMenu() {
   const { addToCart } = useCart();
   const [quantities, setQuantities] = useState<Record<string, number>>({});
@@ -146,71 +322,13 @@ export default function FeaturedMenu() {
         {/* Featured Items Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 lg:gap-8 mb-12">
           {displayItems.map((item) => (
-            <Card
+            <FeaturedItemCard
               key={item.id}
-              className="card-elevated group hover:scale-105 transition-all duration-300"
-            >
-              <div className="relative overflow-hidden rounded-t-lg">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-300"
-                />
-                {item.isPopular && (
-                  <Badge className="absolute top-3 left-3 bg-brand-pink text-white">
-                    Popular
-                  </Badge>
-                )}
-              </div>
-
-              <CardContent className="p-6">
-                <div className="flex justify-between items-start mb-3">
-                  <h3 className="font-heading text-xl font-semibold text-cafe-gray-900">
-                    {item.name}
-                  </h3>
-                  <span className="text-lg font-bold text-brand-brown">
-                    ${item.price.toFixed(2)}
-                  </span>
-                </div>
-
-                <p className="text-cafe-gray-600 mb-4 line-clamp-2">
-                  {item.description}
-                </p>
-
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-3">
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-8 h-8 p-0 rounded-full"
-                      onClick={() => updateQuantity(item.id, -1)}
-                      disabled={(quantities[item.id] || 1) === 1}
-                    >
-                      <Minus className="w-3 h-3" />
-                    </Button>
-                    <span className="w-8 text-center font-medium">
-                      {quantities[item.id] || 1}
-                    </span>
-                    <Button
-                      variant="outline"
-                      size="sm"
-                      className="w-8 h-8 p-0 rounded-full"
-                      onClick={() => updateQuantity(item.id, 1)}
-                    >
-                      <Plus className="w-3 h-3" />
-                    </Button>
-                  </div>
-
-                  <Button
-                    className="btn-primary"
-                    size="sm"
-                    onClick={() => handleAddToCart(item)}
-                  >
-                    Add to Cart
-                  </Button>
-                </div>
-              </CardContent>
-            </Card>
+              item={item}
+              quantity={quantities[item.id] || 1}
+              onUpdateQuantity={updateQuantity}
+              onAddToCart={handleAddToCart}
+            />
           ))}
         </div>
 
@@ -229,10 +347,10 @@ export default function FeaturedMenu() {
         </div>
       </div>
 
-      <LocationModal
-        isOpen={showLocationModal}
-        onClose={() => setShowLocationModal(false)}
-      />
+      {/* Location Modal */}
+      {showLocationModal && (
+        <LocationModal onClose={() => setShowLocationModal(false)} />
+      )}
     </section>
   );
 }
