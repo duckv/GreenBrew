@@ -532,38 +532,7 @@ export default function Menu() {
     setQuantities((prev) => ({ ...prev, [item.id]: 1 }));
   };
 
-  const updateCartQuantity = (itemId: string, newQuantity: number) => {
-    if (newQuantity === 0) {
-      setCart((prev) => prev.filter((item) => item.item.id !== itemId));
-    } else {
-      setCart((prev) =>
-        prev.map((cartItem) =>
-          cartItem.item.id === itemId
-            ? { ...cartItem, quantity: newQuantity }
-            : cartItem,
-        ),
-      );
-    }
-  };
-
-  const removeFromCart = (itemId: string) => {
-    setCart((prev) => prev.filter((item) => item.item.id !== itemId));
-  };
-
-  const getTotalItems = () => {
-    return cart.reduce((total, cartItem) => total + cartItem.quantity, 0);
-  };
-
-  const getTotalPrice = () => {
-    return cart.reduce(
-      (total, cartItem) => total + cartItem.item.price * cartItem.quantity,
-      0,
-    );
-  };
-
   const proceedToCheckout = () => {
-    // Store cart data and navigate to checkout
-    localStorage.setItem("cart", JSON.stringify(cart));
     navigate("/checkout");
   };
 
