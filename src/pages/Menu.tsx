@@ -448,7 +448,7 @@ export default function Menu() {
     <div className="min-h-screen bg-cafe-gray-50">
       <Header />
 
-      <main className="py-8 px-4 sm:px-6 lg:px-8">
+      <main className="section-padding">
         <div className="container-custom">
           {/* Page Header */}
           <div className="text-center mb-8">
@@ -556,34 +556,10 @@ export default function Menu() {
               ))}
             </div>
           )}
-
-          {/* Fixed Cart Bar for Desktop */}
-          {getTotalItems() > 0 && (
-            <div className="hidden md:block fixed bottom-0 left-0 right-0 bg-white shadow-lg border-t border-cafe-gray-200 z-40">
-              <div className="container-custom py-4">
-                <div className="flex items-center justify-between">
-                  <div className="flex items-center space-x-4">
-                    <ShoppingCart className="w-5 h-5 text-brand-brown" />
-                    <span className="font-medium text-cafe-gray-900">
-                      {getTotalItems()} items in cart
-                    </span>
-                    <span className="text-sm text-cafe-gray-600">
-                      Total: ${getTotalPrice().toFixed(2)}
-                    </span>
-                  </div>
-                  <Button className="btn-primary" onClick={proceedToCheckout}>
-                    Proceed to Checkout
-                  </Button>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </main>
 
-      <div className="pb-20 md:pb-0">
-        <Footer />
-      </div>
+      <Footer />
 
       <FloatingCart
         cart={cart}

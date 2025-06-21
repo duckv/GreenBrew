@@ -23,10 +23,7 @@ export default function Header() {
       <div className="container-custom">
         <div className="flex items-center justify-between h-16 md:h-20">
           {/* Logo */}
-          <Link to="/" className="flex items-center space-x-2">
-            <div className="w-8 h-8 md:w-10 md:h-10 bg-brand-pink rounded-full flex items-center justify-center">
-              <span className="text-white font-bold text-lg md:text-xl">B</span>
-            </div>
+          <Link to="/" className="flex items-center">
             <span className="font-heading text-xl md:text-2xl font-bold text-brand-brown">
               Bread N' Br☕︎w
             </span>
