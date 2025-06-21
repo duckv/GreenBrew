@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Plus, Minus, Star } from "lucide-react";
+import { useCart } from "@/contexts/CartContext";
 import LocationModal from "./LocationModal";
-import FloatingCart from "./FloatingCart";
 
 interface MenuItem {
   id: string;
@@ -83,27 +83,10 @@ const featuredItems: MenuItem[] = [
 ];
 
 export default function FeaturedMenu() {
+  const { addToCart } = useCart();
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
   const [quantities, setQuantities] = useState<Record<string, number>>({});
   const [showLocationModal, setShowLocationModal] = useState(false);
-  const [cart, setCart] = useState<Array<{ item: MenuItem; quantity: number }>>(
-    [],
-  );
-
-  // Load cart from localStorage on mount
-  useEffect(() => {
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      setCart(JSON.parse(storedCart));
-    }
-  }, []);
-
-  // Save cart to localStorage whenever it changes
-  useEffect(() => {
-    if (cart.length > 0) {
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }
-  }, [cart]);
 
   const filters = [
     { id: "all", label: "All Items" },
@@ -127,44 +110,10 @@ export default function FeaturedMenu() {
     }));
   };
 
-  const addToCart = (item: MenuItem) => {
+  const handleAddToCart = (item: MenuItem) => {
     const quantity = quantities[item.id] || 1;
-    setCart((prev) => {
-      const existingItem = prev.find(
-        (cartItem) => cartItem.item.id === item.id,
-      );
-      if (existingItem) {
-        return prev.map((cartItem) =>
-          cartItem.item.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + quantity }
-            : cartItem,
-        );
-      }
-      return [...prev, { item, quantity }];
-    });
+    addToCart(item, quantity);
     setQuantities((prev) => ({ ...prev, [item.id]: 1 }));
-  };
-
-  const updateCartQuantity = (itemId: string, newQuantity: number) => {
-    if (newQuantity === 0) {
-      setCart((prev) => prev.filter((item) => item.item.id !== itemId));
-    } else {
-      setCart((prev) =>
-        prev.map((cartItem) =>
-          cartItem.item.id === itemId
-            ? { ...cartItem, quantity: newQuantity }
-            : cartItem,
-        ),
-      );
-    }
-  };
-
-  const removeFromCart = (itemId: string) => {
-    setCart((prev) => prev.filter((item) => item.item.id !== itemId));
-  };
-
-  const proceedToCheckout = () => {
-    setShowLocationModal(true);
   };
 
   return (
@@ -264,7 +213,7 @@ export default function FeaturedMenu() {
                   <Button
                     className="btn-primary"
                     size="sm"
-                    onClick={() => addToCart(item)}
+                    onClick={() => handleAddToCart(item)}
                   >
                     Add to Cart
                   </Button>
@@ -292,13 +241,6 @@ export default function FeaturedMenu() {
       <LocationModal
         isOpen={showLocationModal}
         onClose={() => setShowLocationModal(false)}
-      />
-
-      <FloatingCart
-        cart={cart}
-        updateQuantity={updateCartQuantity}
-        removeItem={removeFromCart}
-        onCheckout={proceedToCheckout}
       />
     </section>
   );
