@@ -25,6 +25,12 @@ interface MenuItem {
   isPopular?: boolean;
 }
 
+interface CustomizationOption {
+  id: string;
+  name: string;
+  price: number;
+}
+
 const featuredItems: MenuItem[] = [
   {
     id: "1",
