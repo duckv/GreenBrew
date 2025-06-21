@@ -526,21 +526,9 @@ export default function Menu() {
     }));
   };
 
-  const addToCart = (item: MenuItem) => {
+  const handleAddToCart = (item: MenuItem) => {
     const quantity = quantities[item.id] || 1;
-    setCart((prev) => {
-      const existingItem = prev.find(
-        (cartItem) => cartItem.item.id === item.id,
-      );
-      if (existingItem) {
-        return prev.map((cartItem) =>
-          cartItem.item.id === item.id
-            ? { ...cartItem, quantity: cartItem.quantity + quantity }
-            : cartItem,
-        );
-      }
-      return [...prev, { item, quantity }];
-    });
+    addToCart(item, quantity);
     setQuantities((prev) => ({ ...prev, [item.id]: 1 }));
   };
 
