@@ -81,7 +81,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "ice-cream",
-    rating: 4.6,
     isPopular: true,
   },
   {
@@ -92,7 +91,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1576506295286-5cda18df43e7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "ice-cream",
-    rating: 4.5,
   },
   {
     id: "i3",
@@ -102,7 +100,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "ice-cream",
-    rating: 4.7,
   },
 
   // Coffee Section
@@ -114,7 +111,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "coffee",
-    rating: 4.9,
   },
   {
     id: "c2",
@@ -124,7 +120,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1572442388796-11668a67e53d?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "coffee",
-    rating: 4.8,
     isPopular: true,
   },
   {
@@ -135,7 +130,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "coffee",
-    rating: 4.6,
   },
 
   // Tea Section
@@ -147,7 +141,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1544787219-7f47ccb76574?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "tea",
-    rating: 4.5,
   },
   {
     id: "t2",
@@ -157,7 +150,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1597318045520-7d36f2b7fcbe?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "tea",
-    rating: 4.4,
   },
 
   // Breads Section
@@ -169,7 +161,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "breads",
-    rating: 4.8,
     isPopular: true,
   },
   {
@@ -180,7 +171,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1549931319-a545dcf3bc73?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "breads",
-    rating: 4.7,
   },
 
   // Breakfast Section
@@ -192,7 +182,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1525351484163-7529414344d8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "breakfast",
-    rating: 4.6,
     isPopular: true,
   },
   {
@@ -203,7 +192,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1582196016295-f8c8bd4b3a99?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "breakfast",
-    rating: 4.7,
   },
 
   // Lunch Section
@@ -215,7 +203,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1553909489-cd47e0ef937f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "lunch",
-    rating: 4.8,
   },
   {
     id: "l2",
@@ -225,7 +212,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1550304943-4f24f54ddde9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "lunch",
-    rating: 4.5,
   },
 
   // Pizza Section
@@ -237,7 +223,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1513104890138-7c749659a591?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "pizza",
-    rating: 4.9,
     isPopular: true,
   },
   {
@@ -248,7 +233,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1628840042765-356cda07504e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "pizza",
-    rating: 4.7,
   },
 
   // Sweets Section
@@ -260,7 +244,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1606313564200-e75d5e30476c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "sweets",
-    rating: 4.8,
     allergens: ["nuts"],
   },
   {
@@ -271,7 +254,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "sweets",
-    rating: 4.9,
     isPopular: true,
   },
 
@@ -284,7 +266,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1572490122747-3968b75cc699?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "seasonal",
-    rating: 4.6,
     isPopular: true,
   },
   {
@@ -295,7 +276,6 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1514517604298-cf80e0fb7d4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "seasonal",
-    rating: 4.5,
   },
 ];
 
@@ -577,10 +557,6 @@ function MenuItemCard({
             Popular
           </Badge>
         )}
-        <div className="absolute top-3 right-3 bg-white/90 rounded-full px-2 py-1 flex items-center space-x-1">
-          <Star className="w-3 h-3 fill-yellow-400 text-yellow-400" />
-          <span className="text-xs font-medium">{item.rating}</span>
-        </div>
       </div>
 
       <CardContent className="p-4 md:p-6">
@@ -593,7 +569,7 @@ function MenuItemCard({
           </span>
         </div>
 
-        <p className="text-cafe-gray-600 mb-3 text-sm md:text-base line-clamp-2">
+        <p className="text-cafe-gray-600 mb-4 text-sm md:text-base line-clamp-2">
           {item.description}
         </p>
 
@@ -610,31 +586,38 @@ function MenuItemCard({
           </div>
         )}
 
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-8 h-8 p-0 rounded-full"
-              onClick={() => onUpdateQuantity(item.id, -1)}
-              disabled={quantity === 1}
-            >
-              <Minus className="w-3 h-3" />
-            </Button>
-            <span className="w-8 text-center font-medium">{quantity}</span>
-            <Button
-              variant="outline"
-              size="sm"
-              className="w-8 h-8 p-0 rounded-full"
-              onClick={() => onUpdateQuantity(item.id, 1)}
-            >
-              <Plus className="w-3 h-3" />
-            </Button>
-          </div>
-
+        {/* Quantity Controls */}
+        <div className="flex items-center justify-center space-x-3 mb-4">
           <Button
-            className="btn-primary text-sm"
+            variant="outline"
             size="sm"
+            className="w-8 h-8 p-0 rounded-full"
+            onClick={() => onUpdateQuantity(item.id, -1)}
+            disabled={quantity === 1}
+          >
+            <Minus className="w-3 h-3" />
+          </Button>
+          <span className="w-8 text-center font-medium">{quantity}</span>
+          <Button
+            variant="outline"
+            size="sm"
+            className="w-8 h-8 p-0 rounded-full"
+            onClick={() => onUpdateQuantity(item.id, 1)}
+          >
+            <Plus className="w-3 h-3" />
+          </Button>
+        </div>
+
+        {/* Action Buttons */}
+        <div className="space-y-2">
+          <Button
+            variant="outline"
+            className="w-full border-brand-brown text-brand-brown hover:bg-brand-brown hover:text-white"
+          >
+            Customize • Nothing +$0.00
+          </Button>
+          <Button
+            className="w-full bg-brand-brown hover:bg-brand-brown/90 text-white"
             onClick={() => onAddToCart(item)}
           >
             Add to Cart
