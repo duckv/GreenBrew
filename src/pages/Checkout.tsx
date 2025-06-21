@@ -298,6 +298,56 @@ export default function Checkout() {
                 </CardContent>
               </Card>
 
+              {/* Tipping Section */}
+              <Card className="card-elevated">
+                <CardHeader>
+                  <CardTitle>Add Tip</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="space-y-4">
+                    <div className="grid grid-cols-3 gap-3">
+                      {[15, 18, 23].map((percentage) => (
+                        <Button
+                          key={percentage}
+                          variant={
+                            tipPercentage === percentage ? "default" : "outline"
+                          }
+                          className={`${
+                            tipPercentage === percentage
+                              ? "bg-brand-brown text-white"
+                              : "border-brand-brown text-brand-brown hover:bg-brand-brown hover:text-white"
+                          }`}
+                          onClick={() => {
+                            setTipPercentage(percentage);
+                            setCustomTip("");
+                          }}
+                        >
+                          {percentage}%
+                        </Button>
+                      ))}
+                    </div>
+                    <div>
+                      <Label htmlFor="custom-tip">Custom Tip ($)</Label>
+                      <Input
+                        id="custom-tip"
+                        type="number"
+                        placeholder="0.00"
+                        value={customTip}
+                        onChange={(e) => {
+                          setCustomTip(e.target.value);
+                          setTipPercentage(0);
+                        }}
+                      />
+                    </div>
+                    {getTipAmount() > 0 && (
+                      <p className="text-sm text-cafe-gray-600">
+                        Tip amount: ${getTipAmount().toFixed(2)}
+                      </p>
+                    )}
+                  </div>
+                </CardContent>
+              </Card>
+
               {/* Special Instructions */}
               <Card className="card-elevated">
                 <CardHeader>
@@ -406,6 +456,12 @@ export default function Checkout() {
                         <span>${getDeliveryFee().toFixed(2)}</span>
                       </div>
                     )}
+                    {getTipAmount() > 0 && (
+                      <div className="flex justify-between text-cafe-gray-600">
+                        <span>Tip</span>
+                        <span>${getTipAmount().toFixed(2)}</span>
+                      </div>
+                    )}
                     <Separator />
                     <div className="flex justify-between text-lg font-bold text-cafe-gray-900">
                       <span>Total</span>
@@ -413,10 +469,27 @@ export default function Checkout() {
                     </div>
                   </div>
 
+                  {getSubtotal() > 150 && (
+                    <div className="text-center p-3 bg-red-50 border border-red-200 rounded-lg mt-4">
+                      <p className="text-sm text-red-700 font-medium mb-2">
+                        Orders over $150 must call the store
+                      </p>
+                      <a
+                        href="tel:+19089330123"
+                        className="text-sm text-red-600 hover:text-red-800 font-medium underline"
+                      >
+                        Call (908) 933-0123
+                      </a>
+                      <p className="text-xs text-red-600 mt-1">
+                        We're sorry for the inconvenience!
+                      </p>
+                    </div>
+                  )}
+
                   <Button
                     className="w-full btn-primary mt-6"
                     onClick={handlePlaceOrder}
-                    disabled={isProcessing}
+                    disabled={isProcessing || getSubtotal() > 150}
                   >
                     {isProcessing
                       ? "Processing..."
