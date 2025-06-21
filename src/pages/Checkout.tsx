@@ -521,6 +521,11 @@ export default function Checkout() {
       </main>
 
       <Footer />
+
+      <LocationModal
+        isOpen={showLocationModal}
+        onClose={() => setShowLocationModal(false)}
+      />
     </div>
   );
 }
