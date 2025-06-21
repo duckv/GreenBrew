@@ -355,7 +355,7 @@ export default function FeaturedMenu() {
           <Button
             size="lg"
             className="btn-primary text-lg px-8 py-4"
-            onClick={() => setShowLocationModal(true)}
+            onClick={handleViewFullMenu}
           >
             View Our Full Menu
           </Button>
