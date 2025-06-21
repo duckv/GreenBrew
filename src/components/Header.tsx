@@ -169,7 +169,7 @@ export default function Header() {
                       className="btn-primary w-full"
                       onClick={() => {
                         setIsOpen(false);
-                        setShowLocationModal(true);
+                        handleOrderOnline();
                       }}
                     >
                       Order Online
