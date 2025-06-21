@@ -39,6 +39,8 @@ export default function Checkout() {
   const [paymentMethod, setPaymentMethod] = useState("card");
   const [specialInstructions, setSpecialInstructions] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
+  const [tipPercentage, setTipPercentage] = useState<number>(0);
+  const [customTip, setCustomTip] = useState("");
 
   useEffect(() => {
     // Load cart and user info
@@ -82,18 +84,36 @@ export default function Checkout() {
   };
 
   const getTax = () => {
-    return getSubtotal() * 0.08; // 8% tax
+    return getSubtotal() * 0.06625; // 6.625% tax
   };
 
   const getDeliveryFee = () => {
     return orderType === "delivery" ? 3.99 : 0;
   };
 
+  const getTipAmount = () => {
+    const subtotal = getSubtotal();
+    if (tipPercentage > 0) {
+      return subtotal * (tipPercentage / 100);
+    }
+    if (customTip) {
+      return parseFloat(customTip) || 0;
+    }
+    return 0;
+  };
+
   const getTotal = () => {
-    return getSubtotal() + getTax() + getDeliveryFee();
+    return getSubtotal() + getTax() + getDeliveryFee() + getTipAmount();
   };
 
   const handlePlaceOrder = async () => {
+    if (getSubtotal() > 150) {
+      alert(
+        "Orders over $150 must call the store at (908) 933-0123. We're sorry for the inconvenience!",
+      );
+      return;
+    }
+
     setIsProcessing(true);
 
     // Simulate payment processing
