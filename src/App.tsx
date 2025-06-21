@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -15,6 +16,23 @@ import Catering from "./pages/Catering";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
+
+// Ensure app starts with clean state
+const initializeCleanState = () => {
+  // Only clear if this is a fresh session (no specific flag set)
+  const hasActiveSession = sessionStorage.getItem("hasActiveSession");
+
+  if (!hasActiveSession) {
+    // Clear any leftover localStorage from previous sessions
+    localStorage.removeItem("cart");
+    localStorage.removeItem("userInfo");
+    localStorage.removeItem("orderType");
+    localStorage.removeItem("currentOrder");
+
+    // Set flag for this session
+    sessionStorage.setItem("hasActiveSession", "true");
+  }
+};
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
