@@ -743,7 +743,9 @@ function MenuItemCard({
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
   // Get customization options for this item's category
-  const itemCustomizationOptions = customizationOptionsByCategory[item.category] || customizationOptionsByCategory["coffee"];
+  const itemCustomizationOptions =
+    customizationOptionsByCategory[item.category] ||
+    customizationOptionsByCategory["coffee"];
 
   const handleCustomizationChange = (optionId: string, checked: boolean) => {
     setSelectedCustomizations((prev) => {
@@ -754,8 +756,22 @@ function MenuItemCard({
       }
     });
   };
+
+  const getTotalCustomizationPrice = () => {
+    return selectedCustomizations.reduce((total, optionId) => {
+      const option = itemCustomizationOptions.find(
+        (opt) => opt.id === optionId,
+      );
+      return total + (option?.price || 0);
+    }, 0);
+  };
+
+  const getSelectedCustomizationNames = () => {
+    return selectedCustomizations
       .map((optionId) => {
-        const option = itemCustomizationOptions.find((opt) => opt.id === optionId);
+        const option = itemCustomizationOptions.find(
+          (opt) => opt.id === optionId,
+        );
         return option?.name;
       })
       .filter(Boolean)
