@@ -53,9 +53,9 @@ export default function LocationModal({ isOpen, onClose }: LocationModalProps) {
   const handleDeliveryService = (service: string) => {
     // Open external delivery service
     const urls = {
-      ubereats: "https://ubereats.com",
-      doordash: "https://doordash.com",
-      grubhub: "https://grubhub.com",
+      ubereats: "https://www.ubereats.com/",
+      doordash: "https://www.doordash.com/",
+      grubhub: "https://www.grubhub.com/",
     };
 
     window.open(urls[service as keyof typeof urls], "_blank");
