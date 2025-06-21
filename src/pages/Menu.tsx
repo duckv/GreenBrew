@@ -67,6 +67,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1488900128323-21503983a07e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "gelato",
+    allergens: ["dairy"],
   },
   {
     id: "g3",
@@ -76,6 +77,7 @@ const menuItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "gelato",
+    allergens: ["dairy"],
   },
   {
     id: "g4",
@@ -86,6 +88,7 @@ const menuItems: MenuItem[] = [
       "https://images.unsplash.com/photo-1567206563064-6f60f40a2b57?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "gelato",
     isPopular: true,
+    allergens: ["dairy"],
   },
 
   // Ice Cream Section
