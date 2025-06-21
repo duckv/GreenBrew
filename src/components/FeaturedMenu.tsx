@@ -13,7 +13,6 @@ interface MenuItem {
   description: string;
   image: string;
   category: "gelato" | "ice-cream" | "pastry" | "coffee";
-  rating: number;
   isPopular?: boolean;
 }
 
@@ -26,7 +25,6 @@ const featuredItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1551024506-0bccd828d307?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "gelato",
-    rating: 4.9,
     isPopular: true,
   },
   {
@@ -37,7 +35,6 @@ const featuredItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1563805042-7684c019e1cb?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "ice-cream",
-    rating: 4.8,
   },
   {
     id: "3",
@@ -47,7 +44,6 @@ const featuredItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1488900128323-21503983a07e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "gelato",
-    rating: 4.7,
   },
   {
     id: "4",
@@ -57,7 +53,6 @@ const featuredItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1497034825429-c343d7c6a68f?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "ice-cream",
-    rating: 4.6,
     isPopular: true,
   },
   {
@@ -68,7 +63,6 @@ const featuredItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1509440159596-0249088772ff?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "pastry",
-    rating: 4.8,
   },
   {
     id: "6",
@@ -78,7 +72,6 @@ const featuredItems: MenuItem[] = [
     image:
       "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
     category: "coffee",
-    rating: 4.9,
   },
 ];
 
