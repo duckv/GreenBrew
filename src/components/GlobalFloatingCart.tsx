@@ -35,7 +35,7 @@ export default function GlobalFloatingCart() {
   return (
     <>
       {/* Floating Cart Button */}
-      <div className="fixed bottom-6 right-6 z-50">
+      <div className="fixed bottom-4 right-4 sm:bottom-6 sm:right-6 z-50">
         <Button
           className="w-14 h-14 rounded-full bg-brand-brown hover:bg-brand-brown-dark shadow-lg relative"
           onClick={() => setIsOpen(true)}
@@ -49,7 +49,7 @@ export default function GlobalFloatingCart() {
 
       {/* Cart Overlay */}
       {isOpen && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-end md:items-center justify-center p-4">
+        <div className="fixed inset-0 bg-black/50 z-50 flex items-end sm:items-center justify-center p-3 sm:p-4">
           <Card className="w-full max-w-md max-h-[80vh] flex flex-col">
             <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-4">
               <CardTitle className="text-lg">
