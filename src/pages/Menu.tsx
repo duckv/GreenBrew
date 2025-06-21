@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Input } from "@/components/ui/input";
-import { Plus, Minus, Star, Search, ShoppingCart } from "lucide-react";
+import { Plus, Minus, Search, ShoppingCart } from "lucide-react";
 
 interface MenuItem {
   id: string;
