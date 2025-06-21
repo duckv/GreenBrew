@@ -493,20 +493,7 @@ export default function Menu() {
 
     setUserInfo(JSON.parse(storedUserInfo));
     setOrderType(storedOrderType);
-
-    // Load existing cart if any
-    const storedCart = localStorage.getItem("cart");
-    if (storedCart) {
-      setCart(JSON.parse(storedCart));
-    }
   }, [navigate]);
-
-  // Save cart to localStorage whenever it changes
-  useEffect(() => {
-    if (cart.length > 0) {
-      localStorage.setItem("cart", JSON.stringify(cart));
-    }
-  }, [cart]);
 
   const categories = [
     { id: "all", label: "All Items" },
