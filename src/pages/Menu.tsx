@@ -34,7 +34,8 @@ interface MenuItem {
     | "lunch"
     | "pizza"
     | "sweets"
-    | "seasonal";
+    | "seasonal"
+    | "pastry";
   isPopular?: boolean;
   allergens?: string[];
 }
