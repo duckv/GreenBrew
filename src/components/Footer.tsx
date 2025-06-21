@@ -18,10 +18,10 @@ export default function Footer() {
           <div className="lg:col-span-1">
             <div className="flex items-center space-x-2 mb-4">
               <div className="w-8 h-8 bg-brand-pink rounded-full flex items-center justify-center">
-                <span className="text-white font-bold text-lg">R</span>
+                <span className="text-white font-bold text-lg">B</span>
               </div>
               <span className="font-heading text-xl font-bold text-white">
-                Reza's Café
+                Bread N' Br☕︎w
               </span>
             </div>
             <p className="text-gray-400 mb-6 leading-relaxed">
@@ -115,27 +115,27 @@ export default function Footer() {
             </h3>
             <div className="space-y-3">
               <a
-                href="tel:+1234567890"
+                href="tel:+19089330123"
                 className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group"
               >
                 <Phone className="w-4 h-4 text-brand-pink group-hover:text-white" />
-                <span>(123) 456-7890</span>
+                <span>(908) 933-0123</span>
               </a>
               <a
-                href="mailto:info@rezascafe.com"
+                href="mailto:breadnbrew512@gmail.com"
                 className="flex items-center space-x-2 text-gray-400 hover:text-white transition-colors group"
               >
                 <Mail className="w-4 h-4 text-brand-pink group-hover:text-white" />
-                <span>info@rezascafe.com</span>
+                <span>breadnbrew512@gmail.com</span>
               </a>
               <a
-                href="https://maps.google.com"
+                href="https://maps.google.com/maps?q=512+Springfield+Ave+Berkeley+Heights+NJ+07922"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-start space-x-2 text-gray-400 hover:text-white transition-colors group"
               >
                 <MapPin className="w-4 h-4 text-brand-pink group-hover:text-white mt-0.5" />
-                <span>123 Main Street, Downtown, City, State 12345</span>
+                <span>512 Springfield Ave, Berkeley Heights, NJ 07922</span>
               </a>
             </div>
           </div>
@@ -167,7 +167,8 @@ export default function Footer() {
         <div className="border-t border-gray-800 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-              © {new Date().getFullYear()} Reza's Café. All rights reserved.
+              © {new Date().getFullYear()} Bread N' Br☕︎w. All rights
+              reserved.
             </p>
             <div className="flex space-x-6 text-sm">
               <Link
