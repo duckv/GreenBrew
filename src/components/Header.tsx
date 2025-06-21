@@ -97,10 +97,7 @@ export default function Header() {
             </Button>
 
             {/* Order Online CTA */}
-            <Button
-              className="btn-primary"
-              onClick={() => setShowLocationModal(true)}
-            >
+            <Button className="btn-primary" onClick={handleOrderOnline}>
               Order Online
             </Button>
           </div>
