@@ -478,22 +478,6 @@ export default function Menu() {
                   className="pl-10"
                 />
               </div>
-
-              {/* Cart Summary for Mobile */}
-              {getTotalItems() > 0 && (
-                <div className="md:hidden">
-                  <Button
-                    className="btn-primary relative"
-                    onClick={proceedToCheckout}
-                  >
-                    <ShoppingCart className="w-4 h-4 mr-2" />
-                    Checkout (${getTotalPrice().toFixed(2)})
-                    <span className="absolute -top-2 -right-2 bg-brand-pink text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-                      {getTotalItems()}
-                    </span>
-                  </Button>
-                </div>
-              )}
             </div>
 
             {/* Category Filters */}
