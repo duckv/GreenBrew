@@ -94,7 +94,7 @@ export default function HeaderCartModal({
 
         <CardContent className="flex-1 overflow-y-auto space-y-4">
           {cart.map((cartItem) => (
-            <div key={cartItem.item.id} className="space-y-3">
+            <div key={cartItem.item.id}>
               <div className="flex items-start space-x-3">
                 <img
                   src={cartItem.item.image}
@@ -156,6 +156,7 @@ export default function HeaderCartModal({
                   </div>
                 </div>
               </div>
+              <Separator />
             </div>
           ))}
         </CardContent>
