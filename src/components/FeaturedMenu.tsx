@@ -153,6 +153,11 @@ function FeaturedItemCard({
   >([]);
   const [isDialogOpen, setIsDialogOpen] = useState(false);
 
+  // Get customization options for this item's category
+  const itemCustomizationOptions =
+    customizationOptionsByCategory[item.category] ||
+    customizationOptionsByCategory["coffee"];
+
   const handleCustomizationChange = (optionId: string, checked: boolean) => {
     setSelectedCustomizations((prev) => {
       if (checked) {
@@ -165,7 +170,9 @@ function FeaturedItemCard({
 
   const getTotalCustomizationPrice = () => {
     return selectedCustomizations.reduce((total, optionId) => {
-      const option = customizationOptions.find((opt) => opt.id === optionId);
+      const option = itemCustomizationOptions.find(
+        (opt) => opt.id === optionId,
+      );
       return total + (option?.price || 0);
     }, 0);
   };
@@ -173,7 +180,9 @@ function FeaturedItemCard({
   const getSelectedCustomizationNames = () => {
     return selectedCustomizations
       .map((optionId) => {
-        const option = customizationOptions.find((opt) => opt.id === optionId);
+        const option = itemCustomizationOptions.find(
+          (opt) => opt.id === optionId,
+        );
         return option?.name;
       })
       .filter(Boolean)
@@ -181,7 +190,7 @@ function FeaturedItemCard({
   };
 
   return (
-    <Card className="card-elevated group hover:scale-105 transition-all duration-300">
+    <Card className="card-elevated group hover:scale-105 transition-all duration-300 h-full flex flex-col">
       <div className="relative overflow-hidden rounded-t-lg">
         <img
           src={item.image}
@@ -195,7 +204,7 @@ function FeaturedItemCard({
         )}
       </div>
 
-      <CardContent className="p-4 md:p-6">
+      <CardContent className="p-4 md:p-6 flex-1 flex flex-col">
         <div className="flex justify-between items-start mb-3">
           <h3 className="font-heading text-lg md:text-xl font-semibold text-cafe-gray-900">
             {item.name}
@@ -205,7 +214,7 @@ function FeaturedItemCard({
           </span>
         </div>
 
-        <p className="text-cafe-gray-600 mb-4 text-sm md:text-base line-clamp-2">
+        <p className="text-cafe-gray-600 mb-4 text-sm md:text-base line-clamp-2 flex-1">
           {item.description}
         </p>
 
@@ -232,7 +241,7 @@ function FeaturedItemCard({
         </div>
 
         {/* Action Buttons */}
-        <div className="space-y-2">
+        <div className="space-y-2 mt-auto">
           <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
             <DialogTrigger asChild>
               <Button
@@ -252,7 +261,7 @@ function FeaturedItemCard({
               </DialogHeader>
 
               <div className="space-y-4 max-h-96 overflow-y-auto">
-                {customizationOptions.map((option) => (
+                {itemCustomizationOptions.map((option) => (
                   <div key={option.id} className="flex items-center space-x-3">
                     <Checkbox
                       id={`${item.id}-${option.id}`}
