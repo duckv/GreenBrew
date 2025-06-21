@@ -473,12 +473,10 @@ const customizationOptionsByCategory: Record<string, CustomizationOption[]> = {
 
 export default function Menu() {
   const navigate = useNavigate();
+  const { addToCart } = useCart();
   const [selectedFilter, setSelectedFilter] = useState<string>("all");
   const [searchTerm, setSearchTerm] = useState("");
   const [quantities, setQuantities] = useState<Record<string, number>>({});
-  const [cart, setCart] = useState<Array<{ item: MenuItem; quantity: number }>>(
-    [],
-  );
   const [userInfo, setUserInfo] = useState<any>(null);
   const [orderType, setOrderType] = useState<string | null>(null);
 
