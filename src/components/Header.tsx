@@ -8,6 +8,7 @@ import LocationModal from "./LocationModal";
 import HeaderCartModal from "./HeaderCartModal";
 
 export default function Header() {
+  const navigate = useNavigate();
   const { getTotalItems } = useCart();
   const [isOpen, setIsOpen] = useState(false);
   const [showLocationModal, setShowLocationModal] = useState(false);
