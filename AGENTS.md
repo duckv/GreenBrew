@@ -1,15 +1,16 @@
-# Fusion Starter
+# Bread N' Br☕︎w
 
-The Fusion Starter is a modern, production-ready template for building full-stack React applications using react-router-dom in SPA mode.
+Bread N' Br☕︎w is a modern, production-ready React application for an artisan bakery and coffee shop, built using the latest 2025 web technologies and react-router-dom in SPA mode.
 
 ## Core Framework & Technologies
 
-- **React 18**
+- **React 19**: Latest stable version with Concurrent Rendering and Server Components support
 - **React Router 6**: Powers the client-side routing
-- **TypeScript**: Type safety is built-in by default
-- **Vite**: Bundling and development server
-- **Vitest**: For testing
-- **TailwindCSS 3**: For styling
+- **TypeScript 5.7**: Type safety with latest language features
+- **Vite 6**: Ultra-fast bundling and development server
+- **Vitest 3**: Modern testing framework
+- **TailwindCSS 3.6**: Latest utility-first CSS framework
+- **Node.js 22**: Latest LTS runtime environment
 
 ## Routing System
 
