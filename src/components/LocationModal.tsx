@@ -264,8 +264,18 @@ export default function LocationModal({ isOpen, onClose }: LocationModalProps) {
           {/* Continue to Checkout Button */}
           <div className="mt-3">
             <Button
-              className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold"
+              className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold disabled:opacity-50 disabled:cursor-not-allowed"
+              disabled={!isFormValid()}
               onClick={() => {
+                // Store user info for checkout page
+                localStorage.setItem(
+                  "checkoutUserInfo",
+                  JSON.stringify({
+                    name: userInfo.name,
+                    phone: userInfo.phone,
+                    email: userInfo.email,
+                  }),
+                );
                 navigate("/checkout");
                 onClose();
               }}
