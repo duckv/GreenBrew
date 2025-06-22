@@ -67,18 +67,18 @@
     "zod": "^3.24.3"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.15",
-    "@types/node": "^22.5.5",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@vitejs/plugin-react-swc": "^3.5.0",
+    "@tailwindcss/typography": "^0.5.18",
+    "@types/node": "^22.10.2",
+    "@types/react": "^19.1.0",
+    "@types/react-dom": "^19.1.0",
+    "@vitejs/plugin-react-swc": "^4.1.1",
     "autoprefixer": "^10.4.20",
-    "globals": "^15.9.0",
-    "postcss": "^8.4.47",
-    "prettier": "^3.5.3",
-    "tailwindcss": "^3.4.11",
-    "typescript": "^5.5.3",
-    "vite": "^6.2.2",
-    "vitest": "^3.1.4"
+    "globals": "^15.14.0",
+    "postcss": "^8.5.1",
+    "prettier": "^3.5.5",
+    "tailwindcss": "^4.1.10",
+    "typescript": "^5.8.3",
+    "vite": "^6.3.5",
+    "vitest": "^3.2.4"
   }
 }
