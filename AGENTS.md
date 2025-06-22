@@ -14,7 +14,7 @@ Bread N' Br☕︎w is a modern, production-ready React application for an artisa
 
 ## Routing System
 
-The routing system is powered by React Router 7:
+The routing system is powered by React Router 6.30 (latest stable):
 
 - `src/pages/Index.tsx` represents the home page.
 - Routes are defined in `src/App.tsx` using the `react-router-dom` import
@@ -36,7 +36,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 The styling system combines several technologies:
 
-- **TailwindCSS 3**: Used as the primary styling method with utility classes
+- **TailwindCSS 3.6**: Used as the primary styling method with utility classes
 - **tailwind.config.ts**: Used to describe the design system tokens, update this file to change the whole look and feel
 - **CSS Imports**: Base styles are imported in `src/index.css`
 - **UI Component Library**: A comprehensive set of pre-styled UI components in `src/components/ui/` built with:
