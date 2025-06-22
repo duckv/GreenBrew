@@ -260,6 +260,19 @@ export default function LocationModal({ isOpen, onClose }: LocationModalProps) {
               {selectedOption === "delivery" ? "Choose Service" : "View Menu"}
             </Button>
           </div>
+
+          {/* Continue to Checkout Button */}
+          <div className="mt-3">
+            <Button
+              className="w-full bg-pink-500 hover:bg-pink-600 text-white font-semibold"
+              onClick={() => {
+                navigate("/checkout");
+                onClose();
+              }}
+            >
+              Continue to Checkout
+            </Button>
+          </div>
         </div>
       </DialogContent>
     </Dialog>
