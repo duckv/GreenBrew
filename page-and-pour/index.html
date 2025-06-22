@@ -1,0 +1,504 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Page & Pour - Books & Coffee</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Toast Notification Container -->
+    <div id="toast-container" class="toast-container"></div>
+
+    <!-- Header -->
+    <header class="header">
+      <div class="container">
+        <div class="header-content">
+          <a href="/" class="logo"> Page & Pour 📚☕ </a>
+
+          <nav class="nav">
+            <a href="#" class="nav-link" data-page="home">Home</a>
+            <a href="#" class="nav-link" data-page="books">Books</a>
+            <a href="#" class="nav-link" data-page="about">About</a>
+            <a href="#" class="nav-link" data-page="events">Events</a>
+            <a href="#" class="nav-link" data-page="contact">Contact</a>
+          </nav>
+
+          <div class="header-actions">
+            <div class="contact-info">
+              <a href="tel:+15551234567" class="contact-link">
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"
+                  />
+                </svg>
+                <span>(555) 123-4567</span>
+              </a>
+              <a
+                href="https://maps.google.com/maps?q=123+Main+Street+Downtown+Portland+OR+97201"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="contact-link"
+              >
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path
+                    d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"
+                  />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+                <span>Downtown Portland</span>
+              </a>
+            </div>
+            <button class="cart-btn" onclick="toggleCart()">
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+                <circle cx="8" cy="21" r="1" />
+                <circle cx="19" cy="21" r="1" />
+                <path
+                  d="m2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57L21.16 4H5.12"
+                />
+              </svg>
+              <span id="cart-count">0</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content">
+      <!-- Home Page -->
+      <div id="home-page" class="page active">
+        <!-- Hero Section -->
+        <section class="hero">
+          <div class="container">
+            <div class="hero-content">
+              <div class="hero-text">
+                <h1>Where Stories Meet Steams</h1>
+                <p>
+                  Discover your next favorite book while savoring expertly
+                  crafted coffee in our cozy literary haven. Every cup tells a
+                  story, every book brews imagination.
+                </p>
+                <div class="hero-buttons">
+                  <button class="btn btn-primary">Browse Books</button>
+                  <button class="btn btn-secondary">View Menu</button>
+                </div>
+              </div>
+              <div class="hero-image">
+                <div class="hero-placeholder">
+                  📚☕ Beautiful bookstore & café interior
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Featured Books Section -->
+        <section class="featured-section">
+          <div class="container">
+            <h2>Staff Picks & New Arrivals</h2>
+            <div class="featured-grid">
+              <div class="featured-item">
+                <div class="item-image">📖</div>
+                <h3>Fiction Bestsellers</h3>
+                <p>Latest page-turners and literary fiction</p>
+                <button
+                  class="btn btn-primary"
+                  onclick="addToCart('Fiction Bundle', 24.99)"
+                >
+                  $24.99
+                </button>
+              </div>
+              <div class="featured-item">
+                <div class="item-image">☕</div>
+                <h3>Signature Coffee</h3>
+                <p>Single-origin beans roasted in-house</p>
+                <button
+                  class="btn btn-primary"
+                  onclick="addToCart('Signature Coffee', 16.99)"
+                >
+                  $16.99
+                </button>
+              </div>
+              <div class="featured-item">
+                <div class="item-image">🎧</div>
+                <h3>Audiobook Club</h3>
+                <p>Monthly membership with exclusive titles</p>
+                <button
+                  class="btn btn-primary"
+                  onclick="addToCart('Audiobook Club', 19.99)"
+                >
+                  $19.99/mo
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Business Info Section -->
+        <section class="business-info">
+          <div class="container">
+            <div class="info-grid">
+              <div class="info-item">
+                <h3>📍 Location</h3>
+                <p>123 Main Street<br />Downtown Portland, OR 97201</p>
+              </div>
+              <div class="info-item">
+                <h3>🕒 Hours</h3>
+                <p>
+                  Monday - Friday: 7:00 AM - 9:00 PM<br />
+                  Saturday - Sunday: 8:00 AM - 10:00 PM
+                </p>
+              </div>
+              <div class="info-item">
+                <h3>📞 Contact</h3>
+                <p>
+                  Phone: (555) 123-4567<br />
+                  Email: hello@pageandpour.com
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Books Page -->
+      <div id="books-page" class="page">
+        <section class="page-hero">
+          <div class="container">
+            <h1>Our Book Collection</h1>
+            <p>
+              From bestsellers to hidden gems, discover your next great read
+            </p>
+          </div>
+        </section>
+
+        <section class="books-section">
+          <div class="container">
+            <div class="books-categories">
+              <button class="category-btn active" data-category="all">
+                All Books
+              </button>
+              <button class="category-btn" data-category="fiction">
+                Fiction
+              </button>
+              <button class="category-btn" data-category="nonfiction">
+                Non-Fiction
+              </button>
+              <button class="category-btn" data-category="mystery">
+                Mystery
+              </button>
+              <button class="category-btn" data-category="romance">
+                Romance
+              </button>
+              <button class="category-btn" data-category="scifi">Sci-Fi</button>
+            </div>
+
+            <div class="books-grid" id="books-grid">
+              <!-- Books will be populated by JavaScript -->
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- About Page -->
+      <div id="about-page" class="page">
+        <section class="page-hero">
+          <div class="container">
+            <h1>About Page & Pour</h1>
+            <p>Where literature and lattes create the perfect blend</p>
+          </div>
+        </section>
+
+        <section class="about-content">
+          <div class="container">
+            <div class="about-text">
+              <h2>Our Story</h2>
+              <p>
+                Founded in 2015, Page & Pour began as a dream to create a space
+                where book lovers and coffee enthusiasts could gather, discover,
+                and connect. We believe that great stories deserve great coffee,
+                and every great conversation starts with both.
+              </p>
+
+              <p>
+                Our carefully curated selection of books spans every genre,
+                while our coffee menu features ethically sourced beans roasted
+                by local artisans. Whether you're here for a quick espresso and
+                the latest bestseller, or settling in for an afternoon with a
+                classic novel and our signature cold brew, you'll find your
+                perfect combination.
+              </p>
+
+              <h3>What Makes Us Special</h3>
+              <ul>
+                <li>Expert book recommendations from our passionate staff</li>
+                <li>Single-origin coffee roasted fresh weekly</li>
+                <li>Author events and book club meetings</li>
+                <li>Cozy reading nooks and study spaces</li>
+                <li>Community-focused events and workshops</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Events Page -->
+      <div id="events-page" class="page">
+        <section class="page-hero">
+          <div class="container">
+            <h1>Events & Book Clubs</h1>
+            <p>Join our community of readers and coffee lovers</p>
+          </div>
+        </section>
+
+        <section class="events-section">
+          <div class="container">
+            <div class="events-grid">
+              <div class="event-item">
+                <h3>Weekly Book Club</h3>
+                <p><strong>Every Thursday, 7:00 PM</strong></p>
+                <p>
+                  Join our diverse community discussing contemporary fiction.
+                  This month we're reading "The Seven Husbands of Evelyn Hugo".
+                </p>
+                <button class="btn btn-primary">Join Us</button>
+              </div>
+
+              <div class="event-item">
+                <h3>Author Reading Series</h3>
+                <p><strong>First Friday, 7:30 PM</strong></p>
+                <p>
+                  Local and visiting authors share their latest works. Next up:
+                  Maria Santos reading from her debut novel "Coffee Shop
+                  Chronicles".
+                </p>
+                <button class="btn btn-primary">RSVP</button>
+              </div>
+
+              <div class="event-item">
+                <h3>Poetry Open Mic</h3>
+                <p><strong>Last Saturday, 8:00 PM</strong></p>
+                <p>
+                  Share your original poetry or favorite verses in our intimate
+                  setting. All skill levels welcome!
+                </p>
+                <button class="btn btn-primary">Sign Up</button>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Contact Page -->
+      <div id="contact-page" class="page">
+        <section class="page-hero">
+          <div class="container">
+            <h1>Get In Touch</h1>
+            <p>We'd love to hear from you</p>
+          </div>
+        </section>
+
+        <section class="contact-section">
+          <div class="container">
+            <div class="contact-grid">
+              <div class="contact-info">
+                <h3>Visit Us</h3>
+                <p>
+                  <strong>Address:</strong><br />
+                  123 Main Street<br />
+                  Downtown Portland, OR 97201
+                </p>
+
+                <p>
+                  <strong>Phone:</strong><br />
+                  (555) 123-4567
+                </p>
+
+                <p>
+                  <strong>Email:</strong><br />
+                  hello@pageandpour.com
+                </p>
+
+                <p>
+                  <strong>Hours:</strong><br />
+                  Monday - Friday: 7:00 AM - 9:00 PM<br />
+                  Saturday - Sunday: 8:00 AM - 10:00 PM
+                </p>
+              </div>
+
+              <div class="contact-form">
+                <h3>Send us a message</h3>
+                <form id="contact-form">
+                  <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <select id="subject" name="subject" required>
+                      <option value="">Select a topic</option>
+                      <option value="general">General Inquiry</option>
+                      <option value="events">Events & Book Clubs</option>
+                      <option value="orders">Book Orders</option>
+                      <option value="catering">Private Events</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="5"
+                      required
+                    ></textarea>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary">
+                    Send Message
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h4>Page & Pour</h4>
+            <p>
+              Where stories meet steams. Your neighborhood bookstore and café
+              since 2015.
+            </p>
+          </div>
+
+          <div class="footer-section">
+            <h4>Quick Links</h4>
+            <ul>
+              <li><a href="#" data-page="home">Home</a></li>
+              <li><a href="#" data-page="books">Books</a></li>
+              <li><a href="#" data-page="about">About</a></li>
+              <li><a href="#" data-page="events">Events</a></li>
+              <li><a href="#" data-page="contact">Contact</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Connect</h4>
+            <ul>
+              <li><a href="#">Newsletter</a></li>
+              <li><a href="#">Book Club</a></li>
+              <li><a href="#">Instagram</a></li>
+              <li><a href="#">Facebook</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-section">
+            <h4>Contact</h4>
+            <p>
+              123 Main Street<br />
+              Downtown Portland, OR 97201<br />
+              (555) 123-4567
+            </p>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2024 Page & Pour. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div id="cart-modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Your Cart</h3>
+          <button class="close-btn" onclick="toggleCart()">&times;</button>
+        </div>
+        <div class="modal-body">
+          <div id="cart-items"></div>
+          <div class="cart-total">
+            <strong>Total: $<span id="cart-total">0.00</span></strong>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" onclick="toggleCart()">
+            Continue Shopping
+          </button>
+          <button class="btn btn-primary" onclick="checkout()">Checkout</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating Cart -->
+    <div id="floating-cart" class="floating-cart">
+      <button onclick="toggleCart()">
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <circle cx="8" cy="21" r="1" />
+          <circle cx="19" cy="21" r="1" />
+          <path
+            d="m2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57L21.16 4H5.12"
+          />
+        </svg>
+        <span id="floating-cart-count">0</span>
+      </button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
