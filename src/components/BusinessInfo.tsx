@@ -32,9 +32,9 @@ export default function BusinessInfo() {
             </h2>
 
             <p className="text-lg text-cafe-gray-600 mb-8 leading-relaxed">
-              Since 2008, we've been baking fresh artisan breads and serving
-              premium coffee in Berkeley Heights. Our passion for quality
-              ingredients and traditional techniques creates an authentic
+              Opening in 2025, we're excited to bring fresh artisan breads and
+              premium coffee to Berkeley Heights. Our passion for quality
+              ingredients and traditional techniques will create an authentic
               experience that brings the community together.
             </p>
 
