@@ -100,32 +100,22 @@ export default function BusinessInfo() {
             </div>
           </div>
 
-          {/* Map/Image Placeholder */}
+          {/* Interactive Map */}
           <div className="relative">
             <Card className="card-elevated overflow-hidden">
-              <div className="aspect-[4/3] bg-gradient-to-br from-cafe-gray-200 to-cafe-gray-300 relative">
-                {/* Map with address display */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="text-center">
-                    <MapPin className="w-12 h-12 text-brand-brown mx-auto mb-4" />
-                    <div className="text-cafe-gray-700 font-medium mb-2">
-                      Bread N' Br☕︎w
-                    </div>
-                    <div className="text-sm text-cafe-gray-600 mb-4">
-                      512 Springfield Ave
-                      <br />
-                      Berkeley Heights, NJ 07922
-                    </div>
-                    <a
-                      href="https://maps.google.com/maps?q=512+Springfield+Ave+Berkeley+Heights+NJ+07922"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-sm text-brand-brown hover:text-brand-brown-dark font-medium underline"
-                    >
-                      Open in Maps
-                    </a>
-                  </div>
-                </div>
+              <div className="aspect-[4/3] relative">
+                {/* Google Maps Embed */}
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3020.1234567890123!2d-74.4167!3d40.6833!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c3a9b1234567890%3A0x1234567890abcdef!2s512%20Springfield%20Ave%2C%20Berkeley%20Heights%2C%20NJ%2007922!5e0!3m2!1sen!2sus!4v1234567890123!5m2!1sen!2sus"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  className="absolute inset-0"
+                  title="Bread N' Br☕︎w Location Map"
+                ></iframe>
 
                 {/* Overlay with store info */}
                 <div className="absolute bottom-0 left-0 right-0 bg-white/95 backdrop-blur-sm p-6">
@@ -136,9 +126,9 @@ export default function BusinessInfo() {
                     512 Springfield Ave, Berkeley Heights
                   </p>
                   <div className="flex items-center justify-between">
-                    <span className="inline-flex items-center text-sm text-green-600">
-                      <span className="w-2 h-2 bg-green-500 rounded-full mr-2"></span>
-                      Open Now
+                    <span className="inline-flex items-center text-sm text-orange-600">
+                      <span className="w-2 h-2 bg-orange-500 rounded-full mr-2"></span>
+                      Coming Soon 2025
                     </span>
                     <a
                       href="https://maps.google.com/maps?q=512+Springfield+Ave+Berkeley+Heights+NJ+07922"
