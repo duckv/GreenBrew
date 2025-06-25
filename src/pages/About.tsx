@@ -122,25 +122,19 @@ export default function About() {
               our doors.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-2xl mx-auto">
               {[
                 {
-                  name: "Sarah Johnson",
-                  role: "Head Baker",
+                  name: "Nally Sadri",
+                  role: "Founder",
                   image:
                     "https://images.unsplash.com/photo-1494790108755-2616b612b641?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
                 },
                 {
-                  name: "Mike Chen",
-                  role: "Coffee Roaster",
+                  name: "Max Ahan",
+                  role: "Founder",
                   image:
                     "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
-                },
-                {
-                  name: "Emma Rodriguez",
-                  role: "Pastry Chef",
-                  image:
-                    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80",
                 },
               ].map((member, index) => (
                 <Card key={index} className="card-elevated overflow-hidden">
