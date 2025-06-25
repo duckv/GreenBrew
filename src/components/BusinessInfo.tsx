@@ -5,18 +5,18 @@ export default function BusinessInfo() {
   const stats = [
     {
       icon: Coffee,
-      value: "500+",
+      value: "TBD",
       label: "Daily Customers",
     },
     {
       icon: Award,
-      value: "4.9",
+      value: "TBD",
       label: "Star Rating",
     },
     {
       icon: Users,
-      value: "15+",
-      label: "Years Serving",
+      value: "2025",
+      label: "Grand Opening",
     },
   ];
 
