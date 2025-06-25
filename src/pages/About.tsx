@@ -57,16 +57,15 @@ export default function About() {
               </h2>
               <div className="space-y-4 text-cafe-gray-600">
                 <p>
-                  Bread N' Br☕︎w opened its doors in 2008 with a simple
+                  Bread N' Br☕︎w opened its doors in 2025 with a simple
                   mission: to create a warm, welcoming space where neighbors
                   become friends over freshly baked bread and perfectly brewed
                   coffee.
                 </p>
                 <p>
-                  What started as a small bakery has grown into Berkeley
-                  Heights' favorite gathering place, where we serve everything
-                  from artisan gelato and premium coffee to hearty breakfast
-                  sandwiches and wood-fired pizzas.
+                  Our new bakery is Berkeley Heights' newest gathering place,
+                  where we serve everything from artisan gelato and premium
+                  coffee to hearty breakfast sandwiches and wood-fired pizzas.
                 </p>
                 <p>
                   Every morning, our bakers arrive before dawn to prepare fresh
